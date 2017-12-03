@@ -24,7 +24,7 @@ struct member
     char name[50];
     int ID[10];
     struct adress book_adress;
-    int phone_number;
+    long phone_number;
     int age;
     char email[50];
 };
