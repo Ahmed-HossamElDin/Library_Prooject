@@ -1,3 +1,4 @@
+#include "structs.h"
 void view_main_menu()
 {
 
@@ -47,7 +48,7 @@ void view_menu_book_management()
 
     switch(n_menu){
 case 1:
-    action_insert_book();
+    action_add_book();
     break;
 case 2:
     action_search_book();
