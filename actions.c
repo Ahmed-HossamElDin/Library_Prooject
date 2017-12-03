@@ -16,19 +16,23 @@ void action_add_book(){
     FILE *books;
     books = fopen("books.txt","a");
       printf("enter the book title\n");
-      scanf("%[^\n]%*c", b.title);
+      scanf(" %[^\n]s", b.title);
       printf("\nenter the book author\n");
-      scanf("%[^\n]%*c", b.author);
+      scanf(" %[^\n]s", b.author);
       printf("\nenter the book publisher\n");
-      scanf("%[^\n]%*c", b.publisher);
+      scanf(" %[^\n]s", b.publisher);
       printf("\nenter the book ISBN\n");
-      scanf("%[^\n]%*c", b.ISBN);
+      scanf(" %[^\n]s", b.ISBN);
       printf("\nenter the number of copies\n");
       scanf("%d",&b.no_copies);
+      printf("\nenter current the number of copies\n");
+      scanf("%d",&b.current_no_copies);
       printf("\nenter the category\n");
       scanf("%s",b.cat);
+      printf("\nenter the date in dd mm yy format\n");
+      scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
 
-      fprintf(books,"\n%s,%s,%s,%s,%d,%d,%s",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat);
+      fprintf(books,"\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
 
     fclose(books);
 

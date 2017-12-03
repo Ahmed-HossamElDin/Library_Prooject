@@ -1,16 +1,21 @@
 #ifndef STRUCTS_H_INCLUDED
 #define STRUCTS_H_INCLUDED
 #include <time.h>
+struct date{
+    int day;
+    int month;
+    int year;
+};
 struct book
 {
     char title[60];
     char author[60];
     char publisher[60];
     char ISBN[16];
-    char cat[20];
     int no_copies;
     int current_no_copies;
-    time_t date_of_publishing;
+    char cat[20];
+    struct date date_of_publishing;
 };
 struct adress
 {
@@ -31,10 +36,11 @@ struct borrowed
 {
     int borrowing_ID;
     int borrowed_ISBN;
-    time_t date_issued;
-    time_t date_due_to_return;
-    time_t date_returned;
+    struct date date_issued;
+    struct date date_due_to_return;
+    struct date date_returned;
 };
+
 
 
 
