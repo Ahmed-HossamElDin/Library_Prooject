@@ -27,7 +27,7 @@ struct member
 {
     char name[50];
     int ID[10];
-    struct adress book_adress;
+    struct adress member_adress;
     long phone_number;
     int age;
     char email[50];
