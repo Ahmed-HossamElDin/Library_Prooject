@@ -5,7 +5,6 @@
 #include <string.h>
 #include <conio.h>
 
-FILE * books;
 
 struct date
 {
@@ -47,26 +46,14 @@ struct borrowed
     struct date date_due_to_return;
     struct date date_returned;
 };
-int c;
-    void read_books()
-    {
-
-c=0;
-        FILE* books;
-        books =fopen("books.txt","r");
-        while (!feof(books))
-        {
-            fscanf(books,"%[,^] %s %s %s %d %d %s\n",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,book_s[c].cat);
-            fscanf(books,"\n");
-            c++;
-        }
-        fclose(books);
-}
+int size;
 int main()
 {
-read_books();
+view_main_menu();
 
-    printf("%s",book_s[0].title);
+int flag=0,i;
+size=read_books();
+
 
     return 0;
 }

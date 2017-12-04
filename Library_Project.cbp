@@ -39,7 +39,6 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="structs.h" />
 		<Unit filename="view.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -43,6 +43,30 @@ void action_add_book()
 void action_search_book()
 {
     system("cls");
+    int x,y;
+    printf("Enter: \n      (1) to search by title\n      (2) to search by to search by author\n      (3) to search by ISBN\n      (4) to search by category\n");
+    scanf("%d",&x);
+
+if (x==1)
+        printf("Enter title : ");
+
+else if (x==2)
+        printf("Enter author : ");
+else if (x==3)
+        printf("Enter ISBN : ");
+        void search_by_ISBN(int n,y);
+{
+    int i;
+    for(i=0; i<n; i++)
+{if (book_s[i].ISBN==isbn)
+printf("\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
+}
+
+else if (x==4)
+        printf("Enter category : ");
+
+
+    }
 
 }
 
@@ -82,6 +106,28 @@ void action_add_member()
 
     fclose(members);
 }
-void action_remove_member(){
+void action_remove_member()
+{
 
+}
+int read_books()
+{
+    int c=0;
+    FILE* books;
+    books =fopen("books.txt","r");
+    while (!feof(books))
+    {
+        fscanf(books,"%[^,],%[^,],%[^,],%d,%d,%d,%[^,],%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,book_s[c].cat,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
+        fscanf(books,"\n");
+        c++;
+    }
+    fclose(books);
+    return c;
+}
+void search_by_ISBN(int n,int isbn)
+{
+    int i;
+    for(i=0; i<n; i++)
+{if (book_s[i].ISBN==isbn)
+printf("\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
 }
