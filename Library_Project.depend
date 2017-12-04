@@ -3,7 +3,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1512290842 source:c:\users\adham elgazar\documents\github\library_project\actions.c
+1512292062 source:c:\users\adham elgazar\documents\github\library_project\actions.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -16,17 +16,16 @@
 	"structs.h"
 	"actions.h"
 
-1512291550 c:\users\adham elgazar\documents\github\library_project\structs.h
+1512403222 c:\users\adham elgazar\documents\github\library_project\structs.h
 	<time.h>
 
-1512285789 source:c:\users\adham elgazar\documents\github\library_project\main.c
+1512406506 source:c:\users\adham elgazar\documents\github\library_project\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<time.h>
 	<string.h>
 	<conio.h>
-	"structs.h"
 
 1512290849 c:\users\adham elgazar\documents\github\library_project\actions.h
 

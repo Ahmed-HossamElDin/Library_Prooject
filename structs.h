@@ -42,6 +42,6 @@ struct borrowed
 };
 
 
-
+struct book book_s[100];
 
 #endif // STRUCTS_H_INCLUDED
