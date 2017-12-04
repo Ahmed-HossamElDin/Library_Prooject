@@ -65,7 +65,7 @@ void action_add_member()
     printf("enter the member name\n");
     scanf(" %[^\n]s", m.name);
     printf("\nenter the member ID\n");
-    scanf(" %d",&m.ID);
+    scanf("%d",&m.ID);
     printf("\nenter member address\n");
     scanf(" %d",&m.member_adress.building);
     printf(",");
