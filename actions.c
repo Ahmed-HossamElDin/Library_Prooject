@@ -40,35 +40,7 @@ void action_add_book()
 
 }
 
-void action_search_book()
-{
-    system("cls");
-    int x,y;
-    printf("Enter: \n      (1) to search by title\n      (2) to search by to search by author\n      (3) to search by ISBN\n      (4) to search by category\n");
-    scanf("%d",&x);
 
-if (x==1)
-        printf("Enter title : ");
-
-else if (x==2)
-        printf("Enter author : ");
-else if (x==3)
-        printf("Enter ISBN : ");
-        void search_by_ISBN(int n,y);
-{
-    int i;
-    for(i=0; i<n; i++)
-{if (book_s[i].ISBN==isbn)
-printf("\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
-}
-
-else if (x==4)
-        printf("Enter category : ");
-
-
-    }
-
-}
 
 void action_add_new_copy()
 {
@@ -124,10 +96,42 @@ int read_books()
     fclose(books);
     return c;
 }
-void search_by_ISBN(int n,int isbn)
+void action_search_book_by_title(int n,char target[],struct book books[])
 {
-    int i;
+    int i,x,j=0,y,counter=0,z,flag=0;
+    x=strlen(target);
     for(i=0; i<n; i++)
-{if (book_s[i].ISBN==isbn)
-printf("\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
+    {
+        y=strlen(books[i].title);
+        for(j=0; j<y; j++)
+            z=0;
+        {
+            if (books[i].title[j]==target[z])
+            {
+
+                while(books[i].title[j]==target[z])
+                {
+                    counter++;
+                    z++;
+                    j++;
+                }
+                if (z==x)
+                {
+                    flag++;
+                    printf("\n%s,%s,%s,%d,%d,%s,%d/%d/%d",books[i].title,books[i].author,books[i].publisher,books[i].ISBN,books[i].no_copies,books[i].current_no_copies,books[i].cat,books[i].date_of_publishing.day,books[i].date_of_publishing.month,books[i].date_of_publishing.year);
+                }
+            }
+        }
+
+    }
+    if (flag==0)
+        printf("No books found");
+}
+void save_changes()
+{
+
+}
+void quit()
+{
+
 }

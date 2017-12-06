@@ -49,10 +49,88 @@ struct borrowed
 int size;
 int main()
 {
-view_main_menu();
+    char target[20];
+    size=read_books();
+    int a;
+    view_main_menu();
+    scanf("%d",&a);
+    int n_menu;
+    switch(a)
+    {
 
-int flag=0,i;
-size=read_books();
+
+    case 1 :
+        view_menu_book_management();
+        scanf("%d",&n_menu);
+        switch(n_menu)
+        {
+        case 1:
+            action_add_book();
+            break;
+        case 2:
+            view_search_menu();
+            int a1;
+            scanf("%d",&a1);
+            if (a1==1)
+            {
+                system("cls");
+                printf("Enter title : ");
+                scanf("%s",target);
+                action_search_book_by_title(size,target,book_s);
+            }
+            else if (a1==2)
+            {
+                system("cls");
+                printf("Enter author : ");
+            }
+            else if (a1==3)
+            {
+                system("cls");
+                printf("Enter ISBN : ");
+            }
+            else if (a1==4)
+            {
+
+                system("cls");
+                printf("Enter category : \n");
+            }
+            else
+            {
+
+                system("cls");
+                printf("--------------------------------------------------Enter a valid number--------------------------------------------------");
+            }
+            break;
+
+        case 3:
+            action_add_new_copy();
+            break;
+
+        case 4:
+            action_delete_book();
+            break;
+        }
+        break;
+    case 2:
+        view_menu_member_management();
+        break;
+    case 3:
+        view_menu_borrow_management();
+        break;
+    case 4:
+        view_menu_admin_actions();
+        break;
+    case 5 :
+        save_changes();
+        break;
+    case 6:
+        quit();
+        break;
+    default :
+        printf("Error : choose a valid number.");
+    }
+    int flag=0,i;
+    size=read_books();
 
 
     return 0;
