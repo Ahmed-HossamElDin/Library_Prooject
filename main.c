@@ -129,10 +129,6 @@ int main()
     default :
         printf("Error : choose a valid number.");
     }
-    int flag=0,i;
-    size=read_books();
-
-
     return 0;
 }
 
