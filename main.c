@@ -4,8 +4,6 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
-
-
 struct date
 {
     int day;
@@ -37,7 +35,7 @@ struct member
     long phone_number;
     int age;
     char email[50];
-};
+}member_s[100];
 struct borrowed
 {
     int borrowing_ID;
@@ -46,11 +44,13 @@ struct borrowed
     struct date date_due_to_return;
     struct date date_returned;
 };
-int size;
+int size_b;
+int size_m;
 int main()
 {
     char target[20];
-    size=read_books();
+    size_b=read_books(book_s);
+    size_m=read_members(member_s);
     int a;
     view_main_menu();
     scanf("%d",&a);
@@ -65,7 +65,7 @@ int main()
         switch(n_menu)
         {
         case 1:
-            action_add_book();
+            action_add_book(size_m);
             break;
         case 2:
             view_search_menu();
@@ -76,7 +76,7 @@ int main()
                 system("cls");
                 printf("Enter title : ");
                 scanf("%s",target);
-                action_search_book_by_title(size,target,book_s);
+                action_search_book_by_title(size_b,target,book_s);
             }
             else if (a1==2)
             {
@@ -113,6 +113,16 @@ int main()
         break;
     case 2:
         view_menu_member_management();
+    scanf("%d",&n_menu);
+    switch(n_menu)
+    {
+    case 1:
+        action_add_member(size_m);
+        break;
+    case 2:
+        action_remove_member();
+        break;
+    }
         break;
     case 3:
         view_menu_borrow_management();
@@ -125,6 +135,10 @@ int main()
         break;
     case 6:
         quit();
+        break;
+    case 7:
+        printf("%d\n",size_m);
+        printf("%d\n",size_b);
         break;
     default :
         printf("Error : choose a valid number.");

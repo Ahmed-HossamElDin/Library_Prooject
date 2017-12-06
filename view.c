@@ -23,17 +23,6 @@ void view_menu_member_management()
 {
     system("cls");
     printf("(1) Registration\n(2) Remove member\n");
-    int n;
-    scanf("%d",&n);
-    switch(n)
-    {
-    case 1:
-        action_add_member();
-        break;
-    case 2:
-        action_remove_member();
-        break;
-    }
 }
 void view_menu_borrow_management()
 {

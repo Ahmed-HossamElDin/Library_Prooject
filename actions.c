@@ -40,8 +40,6 @@ void action_add_book()
 
 }
 
-
-
 void action_add_new_copy()
 {
     system("cls");
@@ -52,7 +50,7 @@ void action_delete_book()
     system("cls");
 
 }
-void action_add_member()
+void action_add_member(int n)
 {
     system("cls");
     struct member m;
@@ -60,8 +58,6 @@ void action_add_member()
     members = fopen("members.txt","a");
     printf("enter the member name\n");
     scanf(" %[^\n]s", m.name);
-    printf("\nenter the member ID\n");
-    scanf("%d",&m.ID);
     printf("\nenter member address\n");
     scanf(" %d",&m.member_adress.building);
     printf(",");
@@ -74,7 +70,7 @@ void action_add_member()
     scanf("%d",&m.age);
     printf("\nenter the member e-mail\n");
     scanf("%s",m.email);
-    fprintf(members,"\n%s,%d,%d\%d\%s,%d,%d,%s",m.name,m.ID,m.member_adress.building,m.member_adress.street,m.member_adress.city,m.phone_number,m.age,m.email);
+    fprintf(members,"\n%s,%d,%d\%d\%s,%d,%d,%s",m.name,(n+1)/2,m.member_adress.building,m.member_adress.street,m.member_adress.city,m.phone_number,m.age,m.email);
 
     fclose(members);
 }
@@ -82,20 +78,35 @@ void action_remove_member()
 {
 
 }
-int read_books()
+int read_books(struct book booka[])
 {
     int c=0;
     FILE* books;
     books =fopen("books.txt","r");
     while (!feof(books))
     {
-        fscanf(books,"%[^,],%[^,],%[^,],%d,%d,%d,%[^,],%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,book_s[c].cat,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
+        fscanf(books,"%[^,],%[^,],%[^,],%d,%d,%d,%[^,],%d/%d/%d\n",booka[c].title,booka[c].author,booka[c].publisher,&booka[c].ISBN,&booka[c].no_copies,&booka[c].current_no_copies,booka[c].cat,&booka[c].date_of_publishing.day,&booka[c].date_of_publishing.month,&booka[c].date_of_publishing.year);
         fscanf(books,"\n");
         c++;
     }
     fclose(books);
     return c;
 }
+int read_members(struct member membera[])
+{
+    int a=0;
+    FILE* members;
+    members =fopen("members.txt","r");
+    while (!feof(members))
+    {
+        fscanf(members,"%[^,],%d,%d,%d,%[^,],%d,%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,&membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,&membera[a].email);
+        fscanf(members,"\n");
+        a++;
+    }
+    fclose(members);
+    return a;
+}
+
 void action_search_book_by_title(int n,char target[],struct book books[])
 {
     int i,x,j=0,y,counter=0,z,flag=0;
