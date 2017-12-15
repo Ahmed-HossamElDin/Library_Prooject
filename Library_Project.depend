@@ -29,3 +29,29 @@
 
 1512566773 c:\users\adham elgazar\documents\github\library_project\actions.h
 
+1513328347 source:e:\library_prooject\actions.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"structs.h"
+
+1513328347 e:\library_prooject\structs.h
+	<time.h>
+
+1513330585 source:e:\library_prooject\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+
+1513330732 source:e:\library_prooject\view.c
+	"structs.h"
+	"actions.h"
+
+1513328347 e:\library_prooject\actions.h
+

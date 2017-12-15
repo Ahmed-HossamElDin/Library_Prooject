@@ -12,7 +12,7 @@ void view_menu_book_management()
 {
     system("cls");
 
-    printf("(1) Insert a new book\n(2) Search for a book\n(3) Add New Copy\n(4) Delete book\n");
+    printf("(1) Insert a new book\n(2) Search for a book\n(3) Add New Copy\n(4) Delete book\n(5) Back\n");
 
 
 }

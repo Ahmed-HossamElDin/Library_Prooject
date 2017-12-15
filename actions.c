@@ -42,6 +42,22 @@ void action_add_book()
 
 void action_add_new_copy()
 {
+    /*int a,b;
+    printf("Enter Book's ISBN: ");
+    scanf("%d",a);
+    printf("Enter number of copies:");
+    scanf("%d",b);
+    if(b<0){
+        printf("Invalid input");
+    } else{
+    for(i=0;i<;i++){
+        if(a==booka[i].ISBN){
+            booka[i].no_copies=b;
+            return;
+        }
+    }*/
+
+    }
     system("cls");
 }
 

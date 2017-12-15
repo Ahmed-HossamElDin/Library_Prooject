@@ -109,6 +109,9 @@ int main()
         case 4:
             action_delete_book();
             break;
+        case 5:
+                        system("cls");
+            break;
         }
         break;
     case 2:
