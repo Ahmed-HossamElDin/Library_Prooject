@@ -1,4 +1,4 @@
-discrete,kenneth,google,9780201119596,15,15,mathematic,11/11/2011
-discrete,kenneth,google,9780201119596,15,15,mathematic,11/11/2011
-discrete,kenneth,google,9780201119596,15,15,mathematic,11/11/2011
-discrete,kenneth,google,9780201119596,15,15,mathematic,11/11/2011
+discrete,kenneth,google,978020111,15,15,mathematic,11/11/2011
+math,kenneth,google,978050111,15,15,mathematic,11/11/2011
+khara,kenneth,google,9781520111,15,15,mathematic,11/11/2011
+modern,kenneth,google,978920111,15,15,mathematic,11/11/2011

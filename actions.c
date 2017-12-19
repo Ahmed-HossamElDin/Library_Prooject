@@ -24,7 +24,7 @@ void action_add_book()
     printf("\nenter the book publisher\n");
     scanf(" %[^\n]s", b.publisher);
     printf("\nenter the book ISBN\n");
-    scanf(" %[^\n]s", b.ISBN);
+    scanf(" %ld", b.ISBN);
     printf("\nenter the number of copies\n");
     scanf("%d",&b.no_copies);
     printf("\nenter current the number of copies\n");
@@ -34,31 +34,38 @@ void action_add_book()
     printf("\nenter the date in dd mm yy format\n");
     scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
 
-    fprintf(books,"\n%s,%s,%s,%s,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
+    fprintf(books,"\n%s,%s,%s,%ld,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
 
     fclose(books);
 
 }
 
-void action_add_new_copy()
+void action_add_new_copy(int h,struct book book[])
 {
-    /*int a,b;
+long a;
+int b,i;
     printf("Enter Book's ISBN: ");
-    scanf("%d",a);
+    scanf("%d",&a);
     printf("Enter number of copies:");
-    scanf("%d",b);
-    if(b<0){
+    scanf("%d",&b);
+    if(b<0)
         printf("Invalid input");
-    } else{
-    for(i=0;i<;i++){
-        if(a==booka[i].ISBN){
-            booka[i].no_copies=b;
-            return;
+
+    else{
+    for(i=0;i<h;i++)
+    {
+printf("%ld \n",book_s[i].ISBN);
+
+        if(a==book_s[i].ISBN)
+        {
+            book_s[i].current_no_copies=h+b;
+            printf("%d",book_s[i].current_no_copies);
+            break;
         }
-    }*/
 
     }
-    system("cls");
+
+ }
 }
 
 void action_delete_book()
@@ -94,14 +101,14 @@ void action_remove_member()
 {
 
 }
-int read_books(struct book booka[])
+int read_books()
 {
     int c=0;
     FILE* books;
     books =fopen("books.txt","r");
     while (!feof(books))
     {
-        fscanf(books,"%[^,],%[^,],%[^,],%d,%d,%d,%[^,],%d/%d/%d\n",booka[c].title,booka[c].author,booka[c].publisher,&booka[c].ISBN,&booka[c].no_copies,&booka[c].current_no_copies,booka[c].cat,&booka[c].date_of_publishing.day,&booka[c].date_of_publishing.month,&booka[c].date_of_publishing.year);
+        fscanf(books,"%[^,],%[^,],%[^,],%ld,%d,%d,%[^,],%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,book_s[c].cat,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
         fscanf(books,"\n");
         c++;
     }
@@ -133,15 +140,16 @@ void action_search_book_by_title(int n,char target[],struct book books[])
         for(j=0; j<y; j++)
             z=0;
         {
-            if (books[i].title[j]==target[z])
+            while (books[i].title[j]==target[z])
             {
 
-                while(books[i].title[j]==target[z])
+                if(books[i].title[j]==target[z])
                 {
                     counter++;
                     z++;
                     j++;
                 }
+                else z++;
                 if (z==x)
                 {
                     flag++;
@@ -154,6 +162,7 @@ void action_search_book_by_title(int n,char target[],struct book books[])
     if (flag==0)
         printf("No books found");
 }
+
 void save_changes()
 {
 

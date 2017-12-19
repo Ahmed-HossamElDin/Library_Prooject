@@ -15,10 +15,10 @@ struct book
     char title[60];
     char author[60];
     char publisher[60];
-    char ISBN[16];
+    long ISBN;
     int no_copies;
     int current_no_copies;
-    char cat[20];
+    char cat[60];
     struct date date_of_publishing;
 } book_s[100];
 struct adress
@@ -52,7 +52,10 @@ int main()
     size_b=read_books(book_s);
     size_m=read_members(member_s);
     int a;
+
     view_main_menu();
+    printf("%s",book_s[0].cat);
+
     scanf("%d",&a);
     int n_menu;
     switch(a)
@@ -103,7 +106,7 @@ int main()
             break;
 
         case 3:
-            action_add_new_copy();
+            action_add_new_copy(size_b,book_s);
             break;
 
         case 4:
