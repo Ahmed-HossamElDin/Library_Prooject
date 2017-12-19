@@ -41,7 +41,7 @@
 1513328347 e:\library_prooject\structs.h
 	<time.h>
 
-1513722237 source:e:\library_prooject\main.c
+1513722979 source:e:\library_prooject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -49,7 +49,7 @@
 	<string.h>
 	<conio.h>
 
-1513722418 source:e:\library_prooject\view.c
+1513723013 source:e:\library_prooject\view.c
 	"structs.h"
 	"actions.h"
 

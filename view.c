@@ -33,7 +33,7 @@ void view_menu_borrow_management()
 void view_menu_admin_actions()
 {
     system("cls");
-    printf("(1) Overdue Books\n(2) Most Popular Books(3) Back\n");
+    printf("(1) Overdue Books\n(2) Most Popular Books\n(3) Back\n");
 }
 
 void view_search_menu()

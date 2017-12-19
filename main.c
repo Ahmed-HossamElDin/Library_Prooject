@@ -57,7 +57,7 @@ LABEL:
     printf("%s",book_s[0].cat);
 
     scanf("%d",&a);
-    int n_menu;
+    int n_menu,n_borrow,n_admin;
     switch(a)
     {
 
@@ -137,9 +137,33 @@ system("cls");
         break;
     case 3:
         view_menu_borrow_management();
+        scanf("%d",&n_borrow);
+        switch(n_borrow)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            system("cls");
+                        goto LABEL;
+                        break;
+        }
         break;
     case 4:
         view_menu_admin_actions();
+        scanf("%d",&n_admin);
+        switch(n_admin)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            system("cls");
+                        goto LABEL;
+                        break;
+        }
         break;
     case 5 :
         save_changes();
