@@ -52,7 +52,7 @@ int main()
     size_b=read_books(book_s);
     size_m=read_members(member_s);
     int a;
-
+LABEL:
     view_main_menu();
     printf("%s",book_s[0].cat);
 
@@ -113,7 +113,8 @@ int main()
             action_delete_book();
             break;
         case 5:
-                        system("cls");
+system("cls");
+                        goto LABEL;
             break;
         }
         break;
@@ -128,6 +129,10 @@ int main()
     case 2:
         action_remove_member();
         break;
+    case 3:
+        system("cls");
+                        goto LABEL;
+                        break;
     }
         break;
     case 3:

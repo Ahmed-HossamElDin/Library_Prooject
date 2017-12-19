@@ -22,18 +22,18 @@ void view_menu_book_management()
 void view_menu_member_management()
 {
     system("cls");
-    printf("(1) Registration\n(2) Remove member\n");
+    printf("(1) Registration\n(2) Remove member\n(3) Back\n");
 }
 void view_menu_borrow_management()
 {
     system("cls");
-    printf("(1) Borrow a Book\n(2) Return a Book\n");
+    printf("(1) Borrow a Book\n(2) Return a Book\n(3) Back\n");
 }
 
 void view_menu_admin_actions()
 {
     system("cls");
-    printf("(1) Overdue Books\n(2) Most Popular Books");
+    printf("(1) Overdue Books\n(2) Most Popular Books(3) Back\n");
 }
 
 void view_search_menu()
