@@ -1,3 +1,5 @@
 ahmed,hatem,salah,mohamed,6422068,16,15,13/11/1998
-discrete,kenneth,google,maths,978020111,24,10,11/11/2011
-programming,kenneth,google,arabic,1191585519,30,20,11/11/2011
+discrete,kenneth,google,maths,978020111,54,40,11/11/2011
+math,kenneth,google,english,978050111,20,10,11/11/2011
+programming,kenneth,google,arabic,1191585519,30,12,11/11/2011
+modern,kenneth,google,french,978920111,15,10,11/11/2011
