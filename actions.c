@@ -59,6 +59,7 @@ void action_add_new_copy(int h,struct book book[])
             if(a==book_s[i].ISBN)
             {
                 book_s[i].current_no_copies+=b;
+                book_s[i].no_copies=book_s[i].current_no_copies;
                 printf("%d",book_s[i].current_no_copies);
                 break;
             }
