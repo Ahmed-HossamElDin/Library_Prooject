@@ -46,3 +46,7 @@ void view_exit_menu()
     system("cls");
         printf("(1) Save and exit\n(2) exit without saving\n(3) Back\n");
 }
+void view_save_menu(){
+ system("cls");
+        printf("Are you sure?\n(1) Proceed \n(2) Back\n");
+}

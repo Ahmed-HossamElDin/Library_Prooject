@@ -16,7 +16,7 @@ int main()
 LABEL:
     view_main_menu();
     scanf("%d",&a);
-    int n_menu,n_borrow,n_admin,n_exit;
+    int n_menu,n_borrow,n_admin,n_exit,n_save;
     switch(a)
     {
 
@@ -168,10 +168,21 @@ system("cls");
         }
         break;
     case 5 :
+        view_save_menu();
+        scanf("%d",&n_save);
+        switch(n_save){
+    case 1:
+            save_changes();
+        break;
+    case 2:
+        system("cls");
+        goto LABEL;
+        break;
+
         save_changes();
         break;
     case 6:
-        view_exit_menu();
+        view_save_menu();
         scanf("%d",&n_exit);
         switch(n_exit){
     case 1:
@@ -189,6 +200,6 @@ system("cls");
         printf("Error : choose a valid number.");
     }
     return 0;
-}}
+}}}
 
 

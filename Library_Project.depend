@@ -68,7 +68,7 @@
 1513770355 e:\project khara\library_prooject\structs.h
 	<time.h>
 
-1513782535 source:e:\project khara\library_prooject\main.c
+1513798887 source:e:\project khara\library_prooject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -77,7 +77,7 @@
 	<conio.h>
 	"structs.h"
 
-1513770484 source:e:\project khara\library_prooject\view.c
+1513798795 source:e:\project khara\library_prooject\view.c
 	"structs.h"
 	"actions.h"
 
