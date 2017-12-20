@@ -4,46 +4,7 @@
 #include <time.h>
 #include <string.h>
 #include <conio.h>
-struct date
-{
-    int day;
-    int month;
-    int year;
-};
-struct book
-{
-    char title[60];
-    char author[60];
-    char publisher[60];
-    long ISBN;
-    int no_copies;
-    int current_no_copies;
-    char cat[60];
-    struct date date_of_publishing;
-} book_s[100];
-struct adress
-{
-    int  building;
-    int  street;
-    char  city[20];
-};
-struct member
-{
-    char name[50];
-    int ID[10];
-    struct adress member_adress;
-    long phone_number;
-    int age;
-    char email[50];
-}member_s[100];
-struct borrowed
-{
-    int borrowing_ID;
-    int borrowed_ISBN;
-    struct date date_issued;
-    struct date date_due_to_return;
-    struct date date_returned;
-};
+#include "structs.h"
 int size_b;
 int size_m;
 int main()
@@ -54,8 +15,6 @@ int main()
     int a;
 LABEL:
     view_main_menu();
-    printf("%s",book_s[0].cat);
-
     scanf("%d",&a);
     int n_menu,n_borrow,n_admin;
     switch(a)
@@ -170,10 +129,6 @@ system("cls");
         break;
     case 6:
         quit();
-        break;
-    case 7:
-        printf("%d\n",size_m);
-        printf("%d\n",size_b);
         break;
     default :
         printf("Error : choose a valid number.");

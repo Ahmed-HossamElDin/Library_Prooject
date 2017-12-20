@@ -17,24 +17,24 @@ void action_add_book()
     struct book b;
     FILE *books;
     books = fopen("books.txt","a");
-    printf("enter the book title\n");
+    printf("Enter the book title\n");
     scanf(" %[^\n]s", b.title);
-    printf("\nenter the book author\n");
+    printf("\nEnter the book author\n");
     scanf(" %[^\n]s", b.author);
-    printf("\nenter the book publisher\n");
+    printf("\nEnter the book publisher\n");
     scanf(" %[^\n]s", b.publisher);
-    printf("\nenter the book ISBN\n");
+    printf("\nEnter the category\n");
+    scanf("%s", b.category);
+    printf("\nEnter the book ISBN\n");
     scanf(" %ld", b.ISBN);
-    printf("\nenter the number of copies\n");
+    printf("\nEnter the number of copies\n");
     scanf("%d",&b.no_copies);
-    printf("\nenter current the number of copies\n");
+    printf("\nEnter current the number of copies\n");
     scanf("%d",&b.current_no_copies);
-    printf("\nenter the category\n");
-    scanf("%s",b.cat);
-    printf("\nenter the date in dd mm yy format\n");
+    printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
 
-    fprintf(books,"\n%s,%s,%s,%ld,%d,%d,%s,%d/%d/%d",b.title,b.author,b.publisher,b.ISBN,b.no_copies,b.current_no_copies,b.cat,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
+    fprintf(books,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",b.title,b.author,b.publisher,b.category,b.ISBN,b.no_copies,b.current_no_copies,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
 
     fclose(books);
 
@@ -79,22 +79,21 @@ void action_add_member(int n)
     struct member m;
     FILE *members;
     members = fopen("members.txt","a");
-    printf("enter the member name\n");
+    printf("Enter the member name\n");
     scanf(" %[^\n]s", m.name);
-    printf("\nenter member address\n");
+    printf("\nEnter member address\n");
     scanf(" %d",&m.member_adress.building);
     printf(",");
     scanf(" %d",&m.member_adress.street);
     printf(",");
     scanf(" %s", m.member_adress.city);
-    printf("\nenter the member phone number\n");
+    printf("\nEnter the member phone number\n");
     scanf("%d",&m.phone_number);
-    printf("\nenter the number age\n");
+    printf("\nEnter the number age\n");
     scanf("%d",&m.age);
-    printf("\nenter the member e-mail\n");
+    printf("\nEnter the member e-mail\n");
     scanf("%s",m.email);
-    fprintf(members,"\n%s,%d,%d\%d\%s,%d,%d,%s",m.name,(n+1)/2,m.member_adress.building,m.member_adress.street,m.member_adress.city,m.phone_number,m.age,m.email);
-
+    fprintf(members,"\n%s,%d,%d/%d/%s,%ld,%d,%s",m.name,n+1,m.member_adress.building,m.member_adress.street,m.member_adress.city,m.phone_number,m.age,m.email);
     fclose(members);
 }
 void action_remove_member()
@@ -108,7 +107,7 @@ int read_books()
     books =fopen("books.txt","r");
     while (!feof(books))
     {
-        fscanf(books,"%[^,],%[^,],%[^,],%ld,%d,%d,%[^,],%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,book_s[c].cat,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
+        fscanf(books,"%[^,],%[^,],%[^,],%[^,],%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
         fscanf(books,"\n");
         c++;
     }
@@ -122,7 +121,7 @@ int read_members(struct member membera[])
     members =fopen("members.txt","r");
     while (!feof(members))
     {
-        fscanf(members,"%[^,],%d,%d,%d,%[^,],%d,%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,&membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,&membera[a].email);
+        fscanf(members,"%[^,],%d,%d/%d/%[^,],%ld,%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,&membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,membera[a].email);
         fscanf(members,"\n");
         a++;
     }
@@ -153,7 +152,7 @@ void action_search_book_by_title(int n,char target[],struct book books[])
                 if (z==x)
                 {
                     flag++;
-                    printf("\n%s,%s,%s,%d,%d,%s,%d/%d/%d",books[i].title,books[i].author,books[i].publisher,books[i].ISBN,books[i].no_copies,books[i].current_no_copies,books[i].cat,books[i].date_of_publishing.day,books[i].date_of_publishing.month,books[i].date_of_publishing.year);
+                    printf("\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",books[i].title,books[i].author,books[i].publisher,books[i].category,books[i].ISBN,books[i].no_copies,books[i].current_no_copies,books[i].date_of_publishing.day,books[i].date_of_publishing.month,books[i].date_of_publishing.year);
                 }
             }
         }

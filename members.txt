@@ -1,14 +1,2 @@
-ameer,6422044,1315add,122255,15,asjjj@gmail.com
-jack,6422092,1212sdasd,111111,22,sadasd#mm.com
-jack,6422092,1212sss,1111,222,sadasd@gmail.com
-asjsadnasd,8,1212ssssss,1111,2222,saasd@ham.com
-asnasn,10,1112asas,1111,2222,sdaasddas
-gghgbhnbn,12,1512sssdx,111232,5555,sadsdasad
-fdsdsf,7,1112sadasdasd,5545,16,sdfsdsadf
-ameer,6422044,1315add,122255,15,asjjj@gmail.com
-jack,6422092,1212sdasd,111111,22,sadasd#mm.com
-jack,6422092,1212sss,1111,222,sadasd@gmail.com
-asjsadnasd,8,1212ssssss,1111,2222,saasd@ham.com
-asnasn,10,1112asas,1111,2222,sdaasddas
-gghgbhnbn,12,1512sssdx,111232,5555,sadsdasad
-fdsdsf,7,1112sadasdasd,5545,16,sdfsdsadf
+ahmed,0,15/12/sssss,12121212,15,ssss@gmail.com
+hhhh,1,12/13/kkkk,1222222,14,jjjjj@yahoo.com
