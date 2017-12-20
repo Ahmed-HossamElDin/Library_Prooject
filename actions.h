@@ -12,6 +12,6 @@ void action_remove_member();
 int read_books();
 int read_members();
 int read_members();
-void save_changes();
+void save_changes(int h);
 void quit();
 #endif // ACTIONS_H_INCLUDED

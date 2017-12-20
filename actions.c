@@ -70,16 +70,16 @@ void action_add_new_copy(int h,struct book book[])
 
 void action_delete_book(int h)
 {
-    long a;
-    int i;
+   long a;
+int i;
     printf("Enter Book's ISBN: ");
     scanf("%ld",&a);
-    for(i=0; i<h; i++)
+    for(i=0;i<h;i++)
     {
         if(a==book_s[i].ISBN)
         {
             book_s[i].ISBN=0;
-            printf("%ld",book_s[i].ISBN);
+            save_changes(h);
             break;
         }
 
@@ -258,9 +258,19 @@ if (flag == 1)
     printf("\n\nThe book is not found... \n\n");
 }
 }
-void save_changes()
+void save_changes(int h)
 {
-
+int c;
+    FILE* save;
+    save =fopen("books.txt","w");
+    for(c=0;c<h;c++)
+    {
+      if(book_s[c].ISBN==0){
+}else{
+        fprintf(save,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+        fprintf(save,"\n");
+    }}
+    fclose(save);
 }
 void quit()
 {
