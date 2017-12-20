@@ -117,6 +117,49 @@ system("cls");
         case 1:
             break;
         case 2:
+            {
+                int diff[size_b];
+               int i,temp,swapped;
+               int j=0;
+               for(i=0;i<size_b;i++)
+               {
+                   diff[j]=book_s[i].no_copies-book_s[i].current_no_copies;
+                   j++;
+               }
+               while(1)
+               {
+               swapped=0;
+               for(i=0;i<size_b-1;i++)
+               {
+                   if (diff[i]<diff[i+1])
+                    {
+                   temp=diff[i];
+                   diff[i]=diff[i+1];
+                   diff[i+1]=temp;
+                   swapped=1;
+                   }
+               }
+               if (swapped==0){break;}
+            }
+
+
+            for(i=0;i<size_b;i++)
+            {
+                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
+            }
+            for(i=0;i<size_b;i++)
+            {
+                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
+            }
+
+            for(i=0;i<size_b;i++)
+            {
+                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
+            }
+
+
+
+            }
             break;
         case 3:
             system("cls");
