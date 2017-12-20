@@ -56,7 +56,7 @@
 
 1513711344 e:\library_prooject\actions.h
 
-1513770788 source:e:\project khara\library_prooject\actions.c
+1513770916 source:e:\project khara\library_prooject\actions.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -68,7 +68,7 @@
 1513770355 e:\project khara\library_prooject\structs.h
 	<time.h>
 
-1513770584 source:e:\project khara\library_prooject\main.c
+1513782535 source:e:\project khara\library_prooject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

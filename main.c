@@ -177,6 +177,8 @@ system("cls");
     case 1:
         break;
     case 2:
+                system("cls");
+        printf("Byeeeeeeee!! :)");
         break;
     case 3:
             system("cls");
