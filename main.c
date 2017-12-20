@@ -16,7 +16,7 @@ int main()
 LABEL:
     view_main_menu();
     scanf("%d",&a);
-    int n_menu,n_borrow,n_admin;
+    int n_menu,n_borrow,n_admin,n_exit;
     switch(a)
     {
 
@@ -69,7 +69,7 @@ LABEL:
             break;
 
         case 4:
-            action_delete_book();
+            action_delete_book(size_b);
             break;
         case 5:
 system("cls");
@@ -128,12 +128,22 @@ system("cls");
         save_changes();
         break;
     case 6:
-        quit();
+        view_exit_menu();
+        scanf("%d",&n_exit);
+        switch(n_exit){
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+            system("cls");
+                        goto LABEL;
+                        break;
         break;
     default :
         printf("Error : choose a valid number.");
     }
     return 0;
-}
+}}
 
 

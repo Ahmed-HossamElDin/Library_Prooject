@@ -41,3 +41,8 @@ void view_search_menu()
     system("cls");
     printf("search by : (1) title\n            (2) author\n            (3) ISBN\n            (4) category\n");
 }
+void view_exit_menu()
+{
+    system("cls");
+        printf("(1) Save and exit\n(2) exit without saving\n(3) Back\n");
+}

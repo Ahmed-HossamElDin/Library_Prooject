@@ -56,3 +56,30 @@
 
 1513711344 e:\library_prooject\actions.h
 
+1513770788 source:e:\project khara\library_prooject\actions.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"structs.h"
+
+1513770355 e:\project khara\library_prooject\structs.h
+	<time.h>
+
+1513770584 source:e:\project khara\library_prooject\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"structs.h"
+
+1513770484 source:e:\project khara\library_prooject\view.c
+	"structs.h"
+	"actions.h"
+
+1513770916 e:\project khara\library_prooject\actions.h
+

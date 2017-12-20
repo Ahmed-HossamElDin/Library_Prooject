@@ -54,11 +54,10 @@ int b,i;
     else{
     for(i=0;i<h;i++)
     {
-printf("%ld \n",book_s[i].ISBN);
 
         if(a==book_s[i].ISBN)
         {
-            book_s[i].current_no_copies=h+b;
+            book_s[i].current_no_copies+=b;
             printf("%d",book_s[i].current_no_copies);
             break;
         }
@@ -68,10 +67,22 @@ printf("%ld \n",book_s[i].ISBN);
  }
 }
 
-void action_delete_book()
+void action_delete_book(int h)
 {
-    system("cls");
+long a;
+int i;
+    printf("Enter Book's ISBN: ");
+    scanf("%ld",&a);
+    for(i=0;i<h;i++)
+    {
+        if(a==book_s[i].ISBN)
+        {
+            book_s[i].ISBN=0;
+            printf("%ld",book_s[i].ISBN);
+            break;
+        }
 
+    }
 }
 void action_add_member(int n)
 {

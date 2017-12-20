@@ -4,7 +4,7 @@ void action_save();
 void action_insert_book(int size);
 void action_search_book_by_title(int n,char target[],struct book books[]);
 void action_add_new_copy(int h,struct book* book[]);
-void action_delete_book();
+void action_delete_book(int h);
 void action_remove_member();
 int read_books();
 int read_members();

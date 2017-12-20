@@ -6,4 +6,5 @@ void view_menu_member_management();
 void view_menu_borrow_management();
 void view_menu_admin_actions();
 void view_search_menu();
+void view_exit_menu();
 #endif // VIEW_H_INCLUDED
