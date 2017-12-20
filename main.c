@@ -117,7 +117,9 @@ system("cls");
         case 1:
             break;
         case 2:
+
             {
+system("cls");
                 int diff[size_b];
                int i,temp,swapped;
                int j=0;
@@ -141,26 +143,32 @@ system("cls");
                }
                if (swapped==0){break;}
             }
-
-
-            for(i=0;i<size_b;i++)
-            {
-                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
-            }
-            for(i=0;i<size_b;i++)
-            {
-                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
-            }
+            printf("our most popular books : \n\n\n");
 
             for(i=0;i<size_b;i++)
             {
-                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n",book_s[i].title);}
+                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
+            }
+            for(i=0;i<size_b;i++)
+            {
+                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
+            }
+
+            for(i=0;i<size_b;i++)
+            {
+                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
             }
 
 
 
             }
+            int bk;
+            printf("(0)Return to main menu\n");
+            scanf("%d",&bk);
+            if(bk==0){ system("cls"); goto LABEL;}
+
             break;
+
         case 3:
             system("cls");
                         goto LABEL;
@@ -187,6 +195,7 @@ system("cls");
         printf("Error : choose a valid number.");
     }
     return 0;
-}}
+}
+}
 
 
