@@ -36,25 +36,23 @@ LABEL:
             if (a1==1)
             {
                 system("cls");
-                printf("Enter title : ");
-                scanf("%s",target);
-                action_search_book_by_title(size_b,target,book_s);
+                action_search_book_by_title(size_b,book_s);
             }
             else if (a1==2)
             {
                 system("cls");
-                printf("Enter author : ");
+                action_search_book_by_author(size_b,book_s);
             }
             else if (a1==3)
             {
                 system("cls");
-                printf("Enter ISBN : ");
+                action_search_book_by_ISBN(size_b,book_s);
             }
             else if (a1==4)
             {
 
                 system("cls");
-                printf("Enter category : \n");
+                action_search_book_by_category(size_b,book_s);
             }
             else
             {
@@ -72,27 +70,27 @@ LABEL:
             action_delete_book(size_b);
             break;
         case 5:
-system("cls");
-                        goto LABEL;
+            system("cls");
+            goto LABEL;
             break;
         }
         break;
     case 2:
         view_menu_member_management();
-    scanf("%d",&n_menu);
-    switch(n_menu)
-    {
-    case 1:
-        action_add_member(size_m);
-        break;
-    case 2:
-        action_remove_member();
-        break;
-    case 3:
-        system("cls");
-                        goto LABEL;
-                        break;
-    }
+        scanf("%d",&n_menu);
+        switch(n_menu)
+        {
+        case 1:
+            action_add_member(size_m);
+            break;
+        case 2:
+            action_remove_member();
+            break;
+        case 3:
+            system("cls");
+            goto LABEL;
+            break;
+        }
         break;
     case 3:
         view_menu_borrow_management();
@@ -105,8 +103,8 @@ system("cls");
             break;
         case 3:
             system("cls");
-                        goto LABEL;
-                        break;
+            goto LABEL;
+            break;
         }
         break;
     case 4:
@@ -118,99 +116,114 @@ system("cls");
             break;
         case 2:
 
+        {
+            system("cls");
+            int diff[size_b];
+            int i,temp,swapped;
+            int j=0;
+            for(i=0; i<size_b; i++)
             {
-system("cls");
-                int diff[size_b];
-               int i,temp,swapped;
-               int j=0;
-               for(i=0;i<size_b;i++)
-               {
-                   diff[j]=book_s[i].no_copies-book_s[i].current_no_copies;
-                   j++;
-               }
-               while(1)
-               {
-               swapped=0;
-               for(i=0;i<size_b-1;i++)
-               {
-                   if (diff[i]<diff[i+1])
+                diff[j]=book_s[i].no_copies-book_s[i].current_no_copies;
+                j++;
+            }
+            while(1)
+            {
+                swapped=0;
+                for(i=0; i<size_b-1; i++)
+                {
+                    if (diff[i]<diff[i+1])
                     {
-                   temp=diff[i];
-                   diff[i]=diff[i+1];
-                   diff[i+1]=temp;
-                   swapped=1;
-                   }
-               }
-               if (swapped==0){break;}
+                        temp=diff[i];
+                        diff[i]=diff[i+1];
+                        diff[i+1]=temp;
+                        swapped=1;
+                    }
+                }
+                if (swapped==0)
+                {
+                    break;
+                }
             }
             printf("our most popular books : \n\n\n");
 
-            for(i=0;i<size_b;i++)
+            for(i=0; i<size_b; i++)
             {
-                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
+                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies)
+                {
+                    printf("%s\n\n",book_s[i].title);
+                }
             }
-            for(i=0;i<size_b;i++)
+            for(i=0; i<size_b; i++)
             {
-                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
+                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies)
+                {
+                    printf("%s\n\n",book_s[i].title);
+                }
             }
 
-            for(i=0;i<size_b;i++)
+            for(i=0; i<size_b; i++)
             {
-                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies){printf("%s\n\n",book_s[i].title);}
+                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies)
+                {
+                    printf("%s\n\n",book_s[i].title);
+                }
             }
 
 
 
-            }
-            int bk;
-            printf("(0)Return to main menu\n");
-            scanf("%d",&bk);
-            if(bk==0)
-                { system("cls");
-             goto LABEL;}
+        }
+        int bk;
+        printf("(0)Return to main menu\n");
+        scanf("%d",&bk);
+        if(bk==0)
+        {
+            system("cls");
+            goto LABEL;
+        }
 
-            break;
+        break;
 
         case 3:
             system("cls");
-                        goto LABEL;
-                        break;
+            goto LABEL;
+            break;
         }
         break;
     case 5 :
         view_save_menu();
         scanf("%d",&n_save);
         switch(n_save)
-    {
+        {
 
-    case 1:
-        save_changes();
-        break;
-    case 2:
-        system("cls");
-        goto LABEL;
-        break;
-    }
+        case 1:
+            save_changes();
+            break;
+        case 2:
+            system("cls");
+            goto LABEL;
+            break;
+        }
         save_changes();
         break;
     case 6:
         view_exit_menu();
         scanf("%d",&n_exit);
-        switch(n_exit){
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
+        switch(n_exit)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
             system("cls");
-                        goto LABEL;
-                        break;
-        break;
-    default :
-        printf("Error : choose a valid number.");
+            goto LABEL;
+            break;
+            break;
+        default :
+            printf("Error : choose a valid number.");
+        }
+        return 0;
     }
-    return 0;
-}
 }
 
 

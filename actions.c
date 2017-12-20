@@ -42,8 +42,8 @@ void action_add_book()
 
 void action_add_new_copy(int h,struct book book[])
 {
-long a;
-int b,i;
+    long a;
+    int b,i;
     printf("Enter Book's ISBN: ");
     scanf("%d",&a);
     printf("Enter number of copies:");
@@ -51,29 +51,30 @@ int b,i;
     if(b<0)
         printf("Invalid input");
 
-    else{
-    for(i=0;i<h;i++)
+    else
     {
-
-        if(a==book_s[i].ISBN)
+        for(i=0; i<h; i++)
         {
-            book_s[i].current_no_copies+=b;
-            printf("%d",book_s[i].current_no_copies);
-            break;
+
+            if(a==book_s[i].ISBN)
+            {
+                book_s[i].current_no_copies+=b;
+                printf("%d",book_s[i].current_no_copies);
+                break;
+            }
+
         }
 
     }
-
- }
 }
 
 void action_delete_book(int h)
 {
-long a;
-int i;
+    long a;
+    int i;
     printf("Enter Book's ISBN: ");
     scanf("%ld",&a);
-    for(i=0;i<h;i++)
+    for(i=0; i<h; i++)
     {
         if(a==book_s[i].ISBN)
         {
@@ -139,40 +140,124 @@ int read_members(struct member membera[])
     fclose(members);
     return a;
 }
-
-void action_search_book_by_title(int n,char target[],struct book books[])
+void action_search_book_by_category(int n,struct book books[])
+{int z,flag,i;
+char target[100];
+printf("Searching for Book...\n");
+printf("please enter the book category: \n");
+scanf("%s",target);
+for(i=0;i<n;i++)
 {
-    int i,x,j=0,y,counter=0,z,flag=0;
-    x=strlen(target);
-    for(i=0; i<n; i++)
+    z = strstr(strlwr(book_s[i].category),strlwr(target));
+    if (z != NULL)
     {
-        y=strlen(books[i].title);
-        for(j=0; j<y; j++)
-            z=0;
-        {
-            while (books[i].title[j]==target[z])
-            {
-
-                if(books[i].title[j]==target[z])
-                {
-                    counter++;
-                    z++;
-                    j++;
-                }
-                else z++;
-                if (z==x)
-                {
-                    flag++;
-                    printf("\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",books[i].title,books[i].author,books[i].publisher,books[i].category,books[i].ISBN,books[i].no_copies,books[i].current_no_copies,books[i].date_of_publishing.day,books[i].date_of_publishing.month,books[i].date_of_publishing.year);
-                }
-            }
-        }
-
+        printf("\nBook found\n\n");
+        printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+               book_s[i].author,
+               book_s[i].publisher,
+               book_s[i].ISBN,
+               book_s[i].no_copies,
+               book_s[i].current_no_copies,
+               book_s[i].category,
+               book_s[i].date_of_publishing.day,
+               book_s[i].date_of_publishing.month,
+               book_s[i].date_of_publishing.year);
+        flag = 0;
     }
-    if (flag==0)
-        printf("No books found");
 }
-
+if (flag == 1)
+{
+    printf("\n\nThe book is not found... \n\n");
+}
+}
+void action_search_book_by_author(int n,struct book books[])
+{int z,flag,i;
+char target[100];
+printf("Searching for Book...\n");
+printf("please enter the book author: \n");
+scanf("%s",target);
+for(i=0;i<n;i++)
+{
+    z = strstr(strlwr(book_s[i].author),strlwr(target));
+    if (z != NULL)
+    {
+        printf("\nBook found\n\n");
+        printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+               book_s[i].author,
+               book_s[i].publisher,
+               book_s[i].ISBN,
+               book_s[i].no_copies,
+               book_s[i].current_no_copies,
+               book_s[i].category,
+               book_s[i].date_of_publishing.day,
+               book_s[i].date_of_publishing.month,
+               book_s[i].date_of_publishing.year);
+        flag = 0;
+    }
+}
+if (flag == 1)
+{
+    printf("\n\nThe book is not found... \n\n");
+}
+}
+void action_search_book_by_ISBN(int n,struct book books[])
+{int i,flag;
+long target;
+printf("please enter the book ISBN: \n");
+scanf("%ld",&target);
+for(i=0;i<n;i++)
+{
+if(book_s[i].ISBN==target)
+{
+    printf("\nBook found\n\n");
+        printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+               book_s[i].author,
+               book_s[i].publisher,
+               book_s[i].ISBN,
+               book_s[i].no_copies,
+               book_s[i].current_no_copies,
+               book_s[i].category,
+               book_s[i].date_of_publishing.day,
+               book_s[i].date_of_publishing.month,
+               book_s[i].date_of_publishing.year);
+               flag=0;
+    }
+ }
+ if (flag != 0)
+{
+    printf("\n\nThe book is not found... \n\n");
+}
+}
+void action_search_book_by_title(int n,struct book books[])
+{int z,flag,i;
+char target[100];
+printf("Searching for Book...\n");
+printf("please enter the book title: \n");
+scanf("%s",target);
+for(i=0;i<n;i++)
+{
+    z = strstr(strlwr(book_s[i].title),strlwr(target));
+    if (z != NULL)
+    {
+        printf("\nBook found\n\n");
+        printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+               book_s[i].author,
+               book_s[i].publisher,
+               book_s[i].ISBN,
+               book_s[i].no_copies,
+               book_s[i].current_no_copies,
+               book_s[i].category,
+               book_s[i].date_of_publishing.day,
+               book_s[i].date_of_publishing.month,
+               book_s[i].date_of_publishing.year);
+        flag = 0;
+    }
+}
+if (flag == 1)
+{
+    printf("\n\nThe book is not found... \n\n");
+}
+}
 void save_changes()
 {
 
