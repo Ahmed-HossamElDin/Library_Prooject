@@ -48,5 +48,5 @@ void view_exit_menu()
 }
 void view_save_menu(){
  system("cls");
-        printf("Are you sure?\n(1) Proceed \n(2) Back\n");
+ printf("Are you sure?\n(1) Proceed \n(2) Back\n");
 }
