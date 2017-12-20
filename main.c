@@ -69,6 +69,8 @@ LABEL:
             break;
 
         case 4:
+                        system("cls");
+
             action_delete_book(size_b);
             break;
         case 5:

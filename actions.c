@@ -78,7 +78,6 @@ int i;
         if(a==book_s[i].ISBN)
         {
             book_s[i].ISBN=0;
-            printf("%ld",book_s[i].ISBN);
             break;
         }
 
