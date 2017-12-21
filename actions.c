@@ -34,7 +34,7 @@ void action_add_book()
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
 
-    fprintf(books,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",b.title,b.author,b.publisher,b.category,b.ISBN,b.no_copies,b.current_no_copies,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
+    fprintf(books,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",b.title,b.author,b.publisher,b.category,b.ISBN,b.no_copies,b.current_no_copies,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
 
     fclose(books);
 

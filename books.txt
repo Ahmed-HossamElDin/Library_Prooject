@@ -1,6 +1,7 @@
 discrete,kenneth,google,maths,978020111,54,40,11/11/2011
 math,kenneth,google,english,978050111,20,10,11/11/2011
 programming,kenneth,google,arabic,1191585519,30,12,11/11/2011
-modern,kenneth,google,french,978920111,15,10,11/11/2011
 aaaaa,ssss,ddddd,fffff,11131313,12,11,12/12/1222
-qqqqqqq,wwwwww,eeeeee,rrrrrr,5555555,12,11,11/11/11
+qqqqqqq,wwwwww,eeeeee,rrrrrr,5555555,22,21,11/11/11
+dfsadsa,sdsad,sad,asds,12456,50,10,10/5/2title,author,publisher,category,123456789,10,36,1/5/6236
+fgad,fsad,sad,sa,2526,262,2,5/6/1236
