@@ -78,7 +78,6 @@ void action_delete_book(int h)
         if(a==book_s[i].ISBN)
         {   flag=1;
             book_s[i].ISBN=0;
-            save_changes(h);
             break;
         }
 

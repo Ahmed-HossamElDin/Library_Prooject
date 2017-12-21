@@ -132,7 +132,6 @@ LABEL:
         case 4:
             system("cls");
             action_delete_book(size_b);
-            size_b--;
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&delete_option);
 
