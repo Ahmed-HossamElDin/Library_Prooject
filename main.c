@@ -114,31 +114,7 @@ LABEL:
             break;
 
         case 3:
-            system("cls");
-            long a;
-            int b,i,j;
-            printf("Enter Book's ISBN: ");
-            scanf("%d",&a);
-            printf("Enter number of copies:");
-            scanf("%d",&b);
-            if(b<0)
-                printf("Invalid input");
-
-            else
-            {
-                for(i=0; i<size_b; i++)
-                {
-
-                    if(a==book_s[i].ISBN)
-                    {
-                        book_s[i].current_no_copies+=b;
-                        book_s[i].no_copies+=b;
-                        printf("Total number of copies is :%d",book_s[i].current_no_copies);
-                        break;
-                    }
-
-                }
-            }
+      action_add_new_copy();
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&s);
             switch(s)
@@ -257,7 +233,7 @@ LABEL:
                     break;
                 }
             }
-            printf("our most popular books : \n\n\n");
+            printf("Our most popular books are : \n\n\n");
 
             for(i=0; i<size_b; i++)
             {

@@ -41,7 +41,7 @@ void action_add_book()
 }
 
 void action_add_new_copy(int h,struct book book[])
-{
+{   system("cls");
     long a;
     int b,i;
     printf("Enter Book's ISBN: ");
@@ -59,8 +59,8 @@ void action_add_new_copy(int h,struct book book[])
             if(a==book_s[i].ISBN)
             {
                 book_s[i].current_no_copies+=b;
-                book_s[i].no_copies=book_s[i].current_no_copies;
-                printf("%d",book_s[i].current_no_copies);
+                book_s[i].no_copies+=b;
+                printf("Total copies of the book : %d\nCurrent copies of the book : %d",book_s[i].no_copies,book_s[i].current_no_copies);
                 break;
             }
 
