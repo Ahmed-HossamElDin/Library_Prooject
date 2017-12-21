@@ -33,15 +33,13 @@ void action_add_book()
     scanf("%d",&b.current_no_copies);
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
-
-    fprintf(books,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",b.title,b.author,b.publisher,b.category,b.ISBN,b.no_copies,b.current_no_copies,b.date_of_publishing.day,b.date_of_publishing.month,b.date_of_publishing.year);
-
     fclose(books);
 
 }
 
 void action_add_new_copy(int h,struct book book[])
-{   system("cls");
+{
+    system("cls");
     long a;
     int b,i;
     printf("Enter Book's ISBN: ");
@@ -71,11 +69,11 @@ void action_add_new_copy(int h,struct book book[])
 
 void action_delete_book(int h)
 {
-   long a;
-int i;
+    long a;
+    int i;
     printf("Enter Book's ISBN: ");
     scanf("%ld",&a);
-    for(i=0;i<h;i++)
+    for(i=0; i<h; i++)
     {
         if(a==book_s[i].ISBN)
         {
@@ -106,7 +104,6 @@ void action_add_member(int n)
     scanf("%d",&m.age);
     printf("\nEnter the member e-mail\n");
     scanf("%s",m.email);
-    fprintf(members,"\n%s,%d,%d/%d/%s,%ld,%d,%s",m.name,n+1,m.member_adress.building,m.member_adress.street,m.member_adress.city,m.phone_number,m.age,m.email);
     fclose(members);
 }
 void action_remove_member()
@@ -142,20 +139,37 @@ int read_members(struct member membera[])
     return a;
 }
 
-void save_changes(int h)
+void save_changes(int h,int z)
 {
-int c;
-    FILE* save;
-    save =fopen("books.txt","w");
-    for(c=0;c<h;c++)
+    int c;
+    FILE* save_b;
+    FILE* save_m;
+    save_b =fopen("books.txt","w");
+    save_m=fopen("members.txt","w");
+    for(c=0; c<h; c++)
     {
-      if(book_s[c].ISBN==0){
-}else{
-        fprintf(save,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
-    }}
-    fclose(save);
-}
-void quit()
-{
+        if(book_s[c].ISBN==0)
+        {
+        }
+        else
+        {
+            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+        }
+    }
+        for(c=0; c<z; c++)
+        {
+            if (member_s[c].ID==0)
+            {
+            }
+            else
+            {
+                fprintf(save_m,"\n%s,%d,%d/%d/%s,%ld,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+            }
+        }
+        fclose(save_b);
+        fclose(save_m);
+    }
+    void quit()
+    {
 
-}
+    }

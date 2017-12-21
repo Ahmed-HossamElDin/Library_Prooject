@@ -36,7 +36,7 @@ LABEL:
             size_b++;
             action_add_book(size_b);
             system("cls");
-                        printf("%d",size_b);
+            printf("%d",size_b);
 
             printf("Book added succesfully");
             int check;
@@ -114,7 +114,7 @@ LABEL:
             break;
 
         case 3:
-      action_add_new_copy();
+            action_add_new_copy();
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&s);
             switch(s)
@@ -124,7 +124,7 @@ LABEL:
                 goto LABEL;
                 break;
             case 2:
-                save_changes(size_b);
+                save_changes(size_b,size_m);
                 break;
 
             }
@@ -141,7 +141,7 @@ LABEL:
                 goto LABEL;
                 break;
             case 2:
-                save_changes(size_b);
+                save_changes(size_b,size_m);
                 break;
 
             }
@@ -285,7 +285,7 @@ LABEL:
         {
 
         case 1:
-            save_changes(size_b);
+            save_changes(size_b,size_m);
             break;
         case 2:
             system("cls");
