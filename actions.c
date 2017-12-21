@@ -26,7 +26,7 @@ void action_add_book()
     printf("\nEnter the category\n");
     scanf("%s", b.category);
     printf("\nEnter the book ISBN\n");
-    scanf(" %ld", b.ISBN);
+    scanf(" %ld",&b.ISBN);
     printf("\nEnter the number of copies\n");
     scanf("%d",&b.no_copies);
     printf("\nEnter current the number of copies\n");

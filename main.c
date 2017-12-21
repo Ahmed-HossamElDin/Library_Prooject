@@ -33,7 +33,18 @@ LABEL:
         switch(n_menu)
         {
         case 1:
-            action_add_book(size_m);
+            action_add_book(size_b);
+            size_b++;
+            system("cls");
+            printf("Book added succesfully");
+            int check;
+            printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+            scanf("%d",&check);
+            if (check==1)
+                goto LABEL;
+            else if (check==2)
+                exit(0);
+            else printf("Enter a valid choice");
             break;
         case 2:
             view_search_menu();
@@ -44,7 +55,7 @@ LABEL:
                 system("cls");
                 search_book_by_title(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
@@ -57,7 +68,7 @@ LABEL:
                 system("cls");
                 search_book_by_author(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
@@ -70,7 +81,7 @@ LABEL:
                 system("cls");
                 search_book_by_ISBN(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
@@ -84,7 +95,7 @@ LABEL:
                 system("cls");
                 search_book_by_category(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
@@ -131,7 +142,7 @@ LABEL:
             switch(s)
             {
             case 1:
-                                system("cls");
+                system("cls");
 
                 goto LABEL;
                 break;
@@ -172,6 +183,17 @@ LABEL:
         {
         case 1:
             action_add_member(size_m);
+            system("cls");
+            printf("Member added succesfully.");
+            size_m++;
+            int check;
+            printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+            scanf("%d",&check);
+            if (check==1)
+                goto LABEL;
+            else if (check==2)
+                exit(0);
+            else printf("Enter a valid choice");
             break;
         case 2:
             action_remove_member();
@@ -307,7 +329,6 @@ LABEL:
         case 3:
             system("cls");
             goto LABEL;
-            break;
             break;
         default :
             printf("Error : choose a valid number.");
