@@ -132,6 +132,7 @@ LABEL:
         case 4:
             system("cls");
             action_delete_book(size_b);
+            size_b--;
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&delete_option);
 
@@ -160,6 +161,7 @@ LABEL:
         {
         case 1:
             action_add_member(size_m);
+            size_m++;
             system("cls");
             printf("Member added succesfully.");
             size_m++;
@@ -174,6 +176,7 @@ LABEL:
             break;
         case 2:
             action_remove_member();
+            size_m--;
             break;
         case 3:
             system("cls");
