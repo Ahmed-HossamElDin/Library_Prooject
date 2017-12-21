@@ -10,30 +10,27 @@ void action_save()
     system("cls");
 
 }
-void action_add_book()
+void action_add_book(int n)
 {
 
     system("cls");
     struct book b;
-    FILE *books;
-    books = fopen("books.txt","a");
     printf("Enter the book title\n");
-    scanf(" %[^\n]s", b.title);
+    scanf(" %[^\n]s", book_s[n].title);
     printf("\nEnter the book author\n");
-    scanf(" %[^\n]s", b.author);
+    scanf(" %[^\n]s", book_s[n].author);
     printf("\nEnter the book publisher\n");
-    scanf(" %[^\n]s", b.publisher);
+    scanf(" %[^\n]s", book_s[n].publisher);
     printf("\nEnter the category\n");
-    scanf("%s", b.category);
+    scanf("%s", book_s[n].category);
     printf("\nEnter the book ISBN\n");
-    scanf(" %ld",&b.ISBN);
+    scanf(" %ld",&book_s[n].ISBN);
     printf("\nEnter the number of copies\n");
-    scanf("%d",&b.no_copies);
+    scanf("%d",&book_s[n].no_copies);
     printf("\nEnter current the number of copies\n");
-    scanf("%d",&b.current_no_copies);
+    scanf("%d",&book_s[n].current_no_copies);
     printf("\nEnter the date in dd mm yy format\n");
-    scanf("%d%d%d",&b.date_of_publishing.day,&b.date_of_publishing.month,&b.date_of_publishing.year);
-    fclose(books);
+    scanf("%d%d%d",&book_s[n].date_of_publishing.day,&book_s[n].date_of_publishing.month,&book_s[n].date_of_publishing.year);
 
 }
 
@@ -41,9 +38,9 @@ void action_add_new_copy(int h,struct book book[])
 {
     system("cls");
     long a;
-    int b,i;
+    int b,i,flag=0;
     printf("Enter Book's ISBN: ");
-    scanf("%d",&a);
+    scanf("%ld",&a);
     printf("Enter number of copies:");
     scanf("%d",&b);
     if(b<0)
@@ -55,7 +52,7 @@ void action_add_new_copy(int h,struct book book[])
         {
 
             if(a==book_s[i].ISBN)
-            {
+            {   flag=1;
                 book_s[i].current_no_copies+=b;
                 book_s[i].no_copies+=b;
                 printf("Total copies of the book : %d\nCurrent copies of the book : %d",book_s[i].no_copies,book_s[i].current_no_copies);
@@ -65,23 +62,31 @@ void action_add_new_copy(int h,struct book book[])
         }
 
     }
+    if(!flag){
+        printf("Book not found!!!!!!!!!!!!!!!!!!!");
+    }
 }
 
 void action_delete_book(int h)
 {
     long a;
-    int i;
+    int i,flag=0;
     printf("Enter Book's ISBN: ");
     scanf("%ld",&a);
     for(i=0; i<h; i++)
     {
         if(a==book_s[i].ISBN)
-        {
+        {   flag=1;
             book_s[i].ISBN=0;
             save_changes(h);
             break;
         }
 
+    }
+
+    if(!flag){
+            system("cls");
+        printf("Book not found!!!!!!!!!!!!!!!!!!!");
     }
 }
 void action_add_member(int n)

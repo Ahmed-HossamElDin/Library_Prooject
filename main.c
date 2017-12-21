@@ -33,8 +33,8 @@ LABEL:
         switch(n_menu)
         {
         case 1:
-            size_b++;
             action_add_book(size_b);
+            size_b++;
             system("cls");
             printf("%d",size_b);
 
@@ -114,7 +114,7 @@ LABEL:
             break;
 
         case 3:
-            action_add_new_copy();
+            action_add_new_copy(size_b);
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&s);
             switch(s)
