@@ -151,8 +151,7 @@ int c;
     {
       if(book_s[c].ISBN==0){
 }else{
-        fprintf(save,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
-        fprintf(save,"\n");
+        fprintf(save,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
     }}
     fclose(save);
 }

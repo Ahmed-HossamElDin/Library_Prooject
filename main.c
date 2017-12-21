@@ -33,9 +33,11 @@ LABEL:
         switch(n_menu)
         {
         case 1:
-            action_add_book(size_b);
             size_b++;
+            action_add_book(size_b);
             system("cls");
+                        printf("%d",size_b);
+
             printf("Book added succesfully");
             int check;
             printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
