@@ -99,11 +99,11 @@ void action_add_member(int n)
     printf("\nEnter member address\n");
     scanf(" %d",&m.member_adress.building);
     printf(",");
-    scanf(" %d",&m.member_adress.street);
+    scanf(" %s",m.member_adress.street);
     printf(",");
     scanf(" %s", m.member_adress.city);
     printf("\nEnter the member phone number\n");
-    scanf("%d",&m.phone_number);
+    scanf("%s",m.phone_number);
     printf("\nEnter the number age\n");
     scanf("%d",&m.age);
     printf("\nEnter the member e-mail\n");
@@ -135,7 +135,7 @@ int read_members(struct member membera[])
     members =fopen("members.txt","r");
     while (!feof(members))
     {
-        fscanf(members,"%[^,],%d,%d/%d/%[^,],%ld,%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,&membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,membera[a].email);
+        fscanf(members,"%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,membera[a].email);
         fscanf(members,"\n");
         a++;
     }
@@ -167,13 +167,63 @@ void save_changes(int h,int z)
             }
             else
             {
-                fprintf(save_m,"\n%s,%d,%d/%d/%s,%ld,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"\n%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
         }
         fclose(save_b);
         fclose(save_m);
     }
-    void quit()
+void validate_string(char str[])
+{
+    int x,i;
+    x=strlen(str);
+    for(i=0; i<x; i++)
+    {
+        if(!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
+            printf("String is invalid");
+    }
+}
+int validate_mail(char x[])
+// returns one if mail meets criteria
+{
+    int length=0;
+    char temp=x[0];
+    while(temp)
+    {
+        length++;
+        temp=x[length];
+    }
+
+    if(x[length-4]!='.')
+    {
+        return 0;
+    }
+
+    int i;
+    for(i=0; i<length; i++)
+    {
+        if(x[i]=='@')
+        {
+            if(i>0 && i<length-5)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+
+}
+void validate_phone_number(char y[])
+{
+    int x;
+    x=strlen(y);
+    if(!((y[0]==0)&&(y[1]==1)&&(x==11)))
     {
 
-    }
+
+        printf("Enter a valid phone number");
+}
+}

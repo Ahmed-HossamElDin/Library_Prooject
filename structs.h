@@ -21,7 +21,7 @@ struct book
 struct adress
 {
     int  building;
-    int  street;
+    char  street[20];
     char  city[20];
 };
 struct member
@@ -29,7 +29,7 @@ struct member
     char name[50];
     int ID;
     struct adress member_adress;
-    long phone_number;
+    char phone_number[12];
     int age;
     char email[50];
 }member_s[100];
