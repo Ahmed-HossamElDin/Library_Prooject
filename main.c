@@ -119,6 +119,7 @@ LABEL:
                     if(a==book_s[i].ISBN)
                     {
                         book_s[i].current_no_copies+=b;
+                        book_s[i].no_copies+=b;
                         printf("Total number of copies is :%d",book_s[i].current_no_copies);
                         break;
                     }
@@ -130,6 +131,8 @@ LABEL:
             switch(s)
             {
             case 1:
+                                system("cls");
+
                 goto LABEL;
                 break;
             case 2:
