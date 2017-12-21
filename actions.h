@@ -2,10 +2,6 @@
 #define ACTIONS_H_INCLUDED
 void action_save();
 void action_insert_book(int size);
-void action_search_book_by_author(int n,struct book books[]);
-void action_search_book_by_category(int n,struct book books[]);
-void action_search_book_by_title(int n,struct book books[]);
-void action_search_book_by_ISBN(int n,struct book books[]);
 void action_add_new_copy(int h,struct book* book[]);
 void action_delete_book(int h);
 void action_remove_member();

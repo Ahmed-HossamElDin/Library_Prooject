@@ -5,15 +5,21 @@
 #include <string.h>
 #include <conio.h>
 #include "structs.h"
+void search_book_by_author(int n,struct book books[]);
+void search_book_by_category(int n,struct book books[]);
+void search_book_by_title(int n,struct book books[]);
+void search_book_by_ISBN(int n,struct book books[]);
 int size_b;
 int size_m;
 int main()
+
 {
     char target[20];
     size_b=read_books(book_s);
     size_m=read_members(member_s);
     int a;
 LABEL:
+    system("cls");
     view_main_menu();
     scanf("%d",&a);
     int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option;
@@ -36,23 +42,55 @@ LABEL:
             if (a1==1)
             {
                 system("cls");
-                action_search_book_by_title(size_b,book_s);
+                search_book_by_title(size_b,book_s);
+                int check;
+                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                scanf("%d",&check);
+                if (check==1)
+                    goto LABEL;
+                else if (check==2)
+                    exit(0);
+                else printf("Enter a valid choice");
             }
             else if (a1==2)
             {
                 system("cls");
-                action_search_book_by_author(size_b,book_s);
+                search_book_by_author(size_b,book_s);
+                int check;
+                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                scanf("%d",&check);
+                if (check==1)
+                    goto LABEL;
+                else if (check==2)
+                    exit(0);
+                else printf("Enter a valid choice");
             }
             else if (a1==3)
             {
                 system("cls");
-                action_search_book_by_ISBN(size_b,book_s);
+                search_book_by_ISBN(size_b,book_s);
+                int check;
+                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                scanf("%d",&check);
+                if (check==1)
+                    goto LABEL;
+                else if (check==2)
+                    exit(0);
+                else printf("Enter a valid choice");
             }
             else if (a1==4)
             {
 
                 system("cls");
-                action_search_book_by_category(size_b,book_s);
+                search_book_by_category(size_b,book_s);
+                int check;
+                printf ("\n\nEnter (1) to go to top menu\nor    (2) to exit\n");
+                scanf("%d",&check);
+                if (check==1)
+                    goto LABEL;
+                else if (check==2)
+                    exit(0);
+                else printf("Enter a valid choice");
             }
             else
             {
@@ -98,12 +136,13 @@ LABEL:
                 save_changes(size_b);
                 break;
 
-            }break;
-            case 4:
-                system("cls");
-                action_delete_book(size_b);
-                printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
-                scanf("%d",delete_option);
+            }
+            break;
+        case 4:
+            system("cls");
+            action_delete_book(size_b);
+            printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
+            scanf("%d",delete_option);
 
             switch(delete_option)
             {
@@ -115,11 +154,11 @@ LABEL:
                 break;
 
             }
-                break;
-            case 5:
-                system("cls");
-                goto LABEL;
-                break;
+            break;
+        case 5:
+            system("cls");
+            goto LABEL;
+            break;
 
         }
         break;
@@ -271,6 +310,128 @@ LABEL:
             printf("Error : choose a valid number.");
         }
         return 0;
+    }
+}
+void search_book_by_category(int n,struct book books[])
+{
+    int z,flag,i;
+    char target[100];
+    printf("Searching for Book...\n");
+    printf("please enter the book category: \n");
+    scanf("%s",target);
+    for(i=0; i<n; i++)
+    {
+        z = strstr(strlwr(book_s[i].category),strlwr(target));
+        if (z != NULL)
+        {
+            printf("\nBook found\n\n");
+            printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+                   book_s[i].author,
+                   book_s[i].publisher,
+                   book_s[i].ISBN,
+                   book_s[i].no_copies,
+                   book_s[i].current_no_copies,
+                   book_s[i].category,
+                   book_s[i].date_of_publishing.day,
+                   book_s[i].date_of_publishing.month,
+                   book_s[i].date_of_publishing.year);
+            flag = 0;
+        }
+    }
+    if (flag == 1)
+    {
+        printf("\n\nThe book is not found... \n\n");
+    }
+}
+void search_book_by_author(int n,struct book books[])
+{
+    int z,flag,i;
+    char target[100];
+    printf("Searching for Book...\n");
+    printf("please enter the book author: \n");
+    scanf("%s",target);
+    for(i=0; i<n; i++)
+    {
+        z = strstr(strlwr(book_s[i].author),strlwr(target));
+        if (z != NULL)
+        {
+            printf("\nBook found\n\n");
+            printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+                   book_s[i].author,
+                   book_s[i].publisher,
+                   book_s[i].ISBN,
+                   book_s[i].no_copies,
+                   book_s[i].current_no_copies,
+                   book_s[i].category,
+                   book_s[i].date_of_publishing.day,
+                   book_s[i].date_of_publishing.month,
+                   book_s[i].date_of_publishing.year);
+            flag = 0;
+        }
+    }
+    if (flag == 1)
+    {
+        printf("\n\nThe book is not found... \n\n");
+    }
+}
+void search_book_by_ISBN(int n,struct book books[])
+{
+    int i,flag;
+    long target;
+    printf("please enter the book ISBN: \n");
+    scanf("%ld",&target);
+    for(i=0; i<n; i++)
+    {
+        if(book_s[i].ISBN==target)
+        {
+            printf("\nBook found\n\n");
+            printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+                   book_s[i].author,
+                   book_s[i].publisher,
+                   book_s[i].ISBN,
+                   book_s[i].no_copies,
+                   book_s[i].current_no_copies,
+                   book_s[i].category,
+                   book_s[i].date_of_publishing.day,
+                   book_s[i].date_of_publishing.month,
+                   book_s[i].date_of_publishing.year);
+            flag=0;
+        }
+    }
+    if (flag != 0)
+    {
+        printf("\n\nThe book is not found... \n\n");
+    }
+}
+void search_book_by_title(int n,struct book books[])
+{
+    int z,flag,i;
+    char target[100];
+    printf("Searching for Book...\n");
+    printf("please enter the book title: \n");
+    scanf("%s",target);
+    for(i=0; i<n; i++)
+    {
+        z = strstr(strlwr(book_s[i].title),strlwr(target));
+        if (z != NULL)
+        {
+            printf("\nBook found\n\n");
+            printf("Title: %s\nAuthor:%s\nPublisher:%s\nISBN:%ld\nNumber of copies:%d\nCurrent number of copies:%d\nCategory:%s\nDate of publication:%d/%d/%d\n", book_s[i].title,
+                   book_s[i].author,
+                   book_s[i].publisher,
+                   book_s[i].ISBN,
+                   book_s[i].no_copies,
+                   book_s[i].current_no_copies,
+                   book_s[i].category,
+                   book_s[i].date_of_publishing.day,
+                   book_s[i].date_of_publishing.month,
+                   book_s[i].date_of_publishing.year);
+            flag = 0;
+        }
+    }
+    if (flag == 1)
+    {
+        printf("\n\nThe book is not found... \n\n");
     }
 }
 
