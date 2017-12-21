@@ -573,4 +573,3 @@ void search_book_by_title(int n,struct book books[])
     }
 }
 
-

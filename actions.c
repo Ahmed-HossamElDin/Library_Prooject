@@ -271,10 +271,13 @@ scanf("%d",&ID);
 for(i=0;i<j;i++){
     if(ID==member_s[i].ID){
         flag1=1;
+
     }
+
 }
 if(!flag1){
     printf("ID not found!");
     goto HOLA;
 }
+
 }
