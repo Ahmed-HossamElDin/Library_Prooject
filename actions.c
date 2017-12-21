@@ -25,10 +25,27 @@ void action_add_book(int n)
     scanf("%s", book_s[n].category);
     printf("\nEnter the book ISBN\n");
     scanf(" %ld",&book_s[n].ISBN);
-    printf("\nEnter the number of copies\n");
+    LABEL:
+    {
+    printf("\nEnter the total number of copies\n");
     scanf("%d",&book_s[n].no_copies);
     printf("\nEnter current the number of copies\n");
     scanf("%d",&book_s[n].current_no_copies);
+    if(book_s[n].current_no_copies>book_s[n].no_copies)
+     {
+        system("cls");
+        printf("Cyrrent number of copies can't be more than total number of copies\nEnter (1) to re-enter\n      (2) to exit\n");
+        int choice;
+        scanf("%d",&choice);
+        if (choice==1)
+            goto LABEL;
+        else if (choice==2)
+            exit(0);
+        else
+            printf("Enter a valid choice");
+
+     }
+    }
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&book_s[n].date_of_publishing.day,&book_s[n].date_of_publishing.month,&book_s[n].date_of_publishing.year);
 
@@ -156,8 +173,10 @@ void save_changes(int h,int z)
         {
         }
         else
-        {
-            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d\n",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+        { if(c==0)
+            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+          else
+            fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
         }
     }
         for(c=0; c<z; c++)
@@ -167,6 +186,9 @@ void save_changes(int h,int z)
             }
             else
             {
+            if(c==0)
+                fprintf(save_m,"%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+            else
                 fprintf(save_m,"\n%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
         }

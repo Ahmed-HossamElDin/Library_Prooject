@@ -36,7 +36,9 @@ struct member
 struct borrowed
 {
     int borrowing_ID;
-    int borrowed_ISBN;
+    int borrowed_ISBN_1;
+    int borrowed_ISBN_2;
+    int borrowed_ISBN_3;
     struct date date_issued;
     struct date date_due_to_return;
     struct date date_returned;
