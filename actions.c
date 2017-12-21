@@ -249,3 +249,32 @@ void validate_phone_number(char y[])
         printf("Enter a valid phone number");
 }
 }
+void borrow_book(int h,int j){
+    long a;
+    int i,ID,flag=0,flag1=0;
+printf("Enter Book's ISBN: ");
+AGAIN:
+scanf("%ld",&a);
+for(i=0;i<h;i++){
+    if(a==book_s[i].ISBN){
+        flag=1;
+    }
+    }
+if(!flag){
+    printf("Invalid ISBN \n");
+    printf("Please Enter a valid ISBN number");
+    goto AGAIN;
+     }
+HOLA:
+printf("Enter Your ID: ");
+scanf("%d",&ID);
+for(i=0;i<j;i++){
+    if(ID==member_s[i].ID){
+        flag1=1;
+    }
+}
+if(!flag1){
+    printf("ID not found!");
+    goto HOLA;
+}
+}

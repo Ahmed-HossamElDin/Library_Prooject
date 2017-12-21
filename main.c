@@ -197,12 +197,15 @@ LABEL:
                 system("cls");
                 search_book_by_title(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) Borrow a book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     exit(0);
+                    else if(check==3){
+                                    borrow_book(size_b,size_m);
+                    }
                 else printf("Enter a valid choice");
             }
             else if (a1==2)
@@ -210,12 +213,15 @@ LABEL:
                 system("cls");
                 search_book_by_author(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) Borrow a book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     exit(0);
+                    else if(check==3){
+                                    borrow_book(size_b,size_m);
+                    }
                 else printf("Enter a valid choice");
             }
             else if (a1==3)
@@ -223,12 +229,15 @@ LABEL:
                 system("cls");
                 search_book_by_ISBN(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n       (3) Borrow a book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     exit(0);
+                    else if(check==3){
+                                    borrow_book(size_b,size_m);
+                    }
                 else printf("Enter a valid choice");
             }
             else if (a1==4)
@@ -237,12 +246,15 @@ LABEL:
                 system("cls");
                 search_book_by_category(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n       (3) Borrow a book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     exit(0);
+                    else if(check==3){
+                                    borrow_book(size_b,size_m);
+                    }
                 else printf("Enter a valid choice");
             }
             else

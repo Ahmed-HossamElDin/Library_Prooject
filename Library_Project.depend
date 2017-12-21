@@ -114,12 +114,12 @@
 	"structs.h"
 	"actions.h"
 
-1513881533 e:\project khara\el khara\library_prooject\structs.h
+1513892617 e:\project khara\el khara\library_prooject\structs.h
 	<time.h>
 
-1513882416 e:\project khara\el khara\library_prooject\actions.h
+1513892792 e:\project khara\el khara\library_prooject\actions.h
 
-1513884773 source:e:\project khara\el khara\library_prooject\actions.c
+1513894869 source:e:\project khara\el khara\library_prooject\actions.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -128,7 +128,7 @@
 	<conio.h>
 	"structs.h"
 
-1513883614 source:e:\project khara\el khara\library_prooject\main.c
+1513894389 source:e:\project khara\el khara\library_prooject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
