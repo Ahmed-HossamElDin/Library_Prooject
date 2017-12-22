@@ -9,7 +9,6 @@ int action_add_book(int n)
 {
 
     system("cls");
-    struct book b;
     printf("Enter the book title\n");
     scanf(" %[^\n]s", book_s[n].title);
     printf("\nEnter the book author\n");
@@ -132,6 +131,7 @@ int action_add_member(int n)
         goto LAST_NAME_SCAN;
     }
         }
+        member_s[n].ID=n+1;
 
     printf("\nEnter member address \n(building number,street,city)\n");
     scanf(" %d",&member_s[n].member_adress.building);
@@ -252,9 +252,9 @@ void save_changes(int h,int z)
         for(c=0; c<z-1; c++)
         {
             if(c==0)
-                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             else
-                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
         if (borrow_s[c].ID==0)
             {
