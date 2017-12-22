@@ -297,7 +297,7 @@ int validate_phone_number(char y[])
 {
     int x;
     x=strlen(y);
-    if(((y[0]==0)&&(y[1]==1)&&(x==11)))
+    if(!((y[0]='0')&&(y[1]='1')&&(x==11)))
     {
            return 1;
     }
