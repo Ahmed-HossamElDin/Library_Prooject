@@ -43,7 +43,7 @@ LABEL:
 
             printf("Book added succesfully");
             int check;
-            printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+            printf ("\n\nEnter (1) to go to main menu and save\nor    (2) to exit without saving\n");
             scanf("%d",&check);
             if (check==1)
                 goto LABEL;
@@ -168,7 +168,7 @@ LABEL:
             printf("Member added succesfully.");
             size_m++;
             int check;
-            printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+            printf ("\n\nEnter (1) to go to main menu and save\nor    (2) to exit without saving\n");
             scanf("%d",&check);
             if (check==1)
                 goto LABEL;
@@ -475,9 +475,14 @@ LABEL:
         {
 
         case 1:
+
             save_changes(size_b,size_m);
+
             break;
         case 2:
+            save_changes(size_b,size_m);
+            goto LABEL;
+        case 3:
             system("cls");
             goto LABEL;
             break;
