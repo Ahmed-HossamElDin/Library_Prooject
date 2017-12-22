@@ -3,7 +3,7 @@
 	<stdio.h>
 	<stdlib.h>
 
-1513975001 source:c:\users\adham elgazar\documents\github\library_project\actions.c
+1513983507 source:c:\users\adham elgazar\documents\github\library_project\actions.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -12,14 +12,14 @@
 	<conio.h>
 	"structs.h"
 
-1513801282 source:c:\users\adham elgazar\documents\github\library_project\view.c
+1513980486 source:c:\users\adham elgazar\documents\github\library_project\view.c
 	"structs.h"
 	"actions.h"
 
 1513969715 c:\users\adham elgazar\documents\github\library_project\structs.h
 	<time.h>
 
-1513974541 source:c:\users\adham elgazar\documents\github\library_project\main.c
+1513983611 source:c:\users\adham elgazar\documents\github\library_project\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -28,7 +28,7 @@
 	<conio.h>
 	"structs.h"
 
-1513967235 c:\users\adham elgazar\documents\github\library_project\actions.h
+1513983509 c:\users\adham elgazar\documents\github\library_project\actions.h
 
 1513714500 source:e:\library_prooject\actions.c
 	<stdio.h>

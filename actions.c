@@ -134,12 +134,12 @@ int action_add_member(int n)
         member_s[n].ID=n+1;
 
     printf("\nEnter member address \n(building number,street,city)\n");
-    scanf(" %d",&member_s[n].member_adress.building);
+    scanf("%d",&member_s[n].member_adress.building);
     printf(",");
     STREET_SCAN:
         {
 
-    scanf(" %s",member_s[n].member_adress.street);
+    scanf("%[^/n]s",member_s[n].member_adress.street);
     int st;
     st=validate_string(member_s[n].member_adress.street);
     if (st==1){}
@@ -153,7 +153,7 @@ int action_add_member(int n)
     CITY_SCAN:
         {
 
-    scanf(" %s", member_s[n].member_adress.city);
+    scanf("%[^/n]s", member_s[n].member_adress.city);
     int ct;
     ct=validate_string(member_s[n].member_adress.city);
     if (ct==1){}
@@ -227,7 +227,21 @@ int read_members()
     return a;
 }
 
-void save_changes(int h,int z)
+int read_borrows()
+{
+    int a=0;
+    FILE* borrow;
+    borrow=fopen("borrow.txt","r");
+    while (!feof(borrow))
+    {
+        fscanf(borrow,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",&borrow_s[a].ID,&borrow_s[a].ISBN,&borrow_s[a].date_issued.day,&borrow_s[a].date_issued.month,&borrow_s[a].date_issued.year,&borrow_s[a].date_due_to_return.day,&borrow_s[a].date_due_to_return.month,&borrow_s[a].date_due_to_return.year,&borrow_s[a].date_returned.day,&borrow_s[a].date_returned.month,&borrow_s[a].date_returned.year);
+        fscanf(borrow,"\n");
+        a++;
+    }
+    fclose(borrow);
+    return a;
+}
+void save_changes(int h,int z,int k)
 {
     int c;
     FILE* save_a;
@@ -260,8 +274,12 @@ void save_changes(int h,int z)
             }
             else
             {
-            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
+                for(c=0;c<k;c++)
+            {
+
+            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[k].ID,borrow_s[k].ISBN,borrow_s[k].date_issued.day,borrow_s[k].date_issued.month,borrow_s[k].date_issued.year,borrow_s[k].date_due_to_return.day,borrow_s[k].date_due_to_return.month,borrow_s[k].date_due_to_return.year);
             }
+        }
         fclose(save_b);
         fclose(save_m);
         fclose(save_a);
