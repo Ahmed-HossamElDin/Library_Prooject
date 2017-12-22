@@ -5,7 +5,7 @@ void view_main_menu()
 
     printf("\t\t\t\t\t!!!!!!!!!WELCOME>>>>>>>>>>>>>\n");
 
-    printf("(1) Book Management\n(2) Member Management\n(3) Borrow Management\n(4) Administrative actions\n(5) Save Changes\n(6) Exit\n\n");
+    printf("(1) Book Management\n(2) Member Management\n(3) Borrow Management\n(4) Administrative actions\n(5) Save Changes\n(6) Exit\n(7) View all books\n(8) View all members\n");
 }
 
 void view_menu_book_management()
@@ -50,3 +50,5 @@ void view_save_menu(){
  system("cls");
  printf("Are you sure?\n(1) Proceed and exit \n(2) Proceed and return to main menu \n(3) Back\n");
 }
+
+

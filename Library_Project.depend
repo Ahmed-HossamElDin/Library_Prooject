@@ -137,3 +137,30 @@
 	<conio.h>
 	"structs.h"
 
+1513975846 source:f:\library_proojectt\actions.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"structs.h"
+
+1513975846 f:\library_proojectt\structs.h
+	<time.h>
+
+1513978648 source:f:\library_proojectt\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<time.h>
+	<string.h>
+	<conio.h>
+	"structs.h"
+
+1513978949 source:f:\library_proojectt\view.c
+	"structs.h"
+	"actions.h"
+
+1513975846 f:\library_proojectt\actions.h
+

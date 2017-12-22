@@ -212,7 +212,7 @@ LABEL:
                     borrow_book(size_b,size_m);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
-                        if (check==1)
+                    if (check==1)
                     {
                         goto LABEL;
                     }
@@ -240,7 +240,7 @@ LABEL:
                     borrow_book(size_b,size_m);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
-                        if (check==1)
+                    if (check==1)
                     {
                         goto LABEL;
                     }
@@ -268,7 +268,7 @@ LABEL:
                     borrow_book(size_b,size_m);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
-                        if (check==1)
+                    if (check==1)
                     {
                         goto LABEL;
                     }
@@ -482,6 +482,7 @@ LABEL:
         case 2:
             save_changes(size_b,size_m);
             goto LABEL;
+            break;
         case 3:
             system("cls");
             goto LABEL;
@@ -491,27 +492,38 @@ LABEL:
         break;
     case 6:
 EXIT:
-    {
-        view_exit_menu();
-        scanf("%d",&n_exit);
-        switch(n_exit)
         {
-        case 1:
-            save_changes(size_b,size_m);
-            exit(0);
-            break;
-        case 2:
-            exit(0);
-            break;
-        case 3:
-            system("cls");
-            goto LABEL;
-            break;
-        default :
-            printf("Error : choose a valid number.");
+            view_exit_menu();
+            scanf("%d",&n_exit);
+            switch(n_exit)
+            {
+            case 1:
+                save_changes(size_b,size_m);
+                exit(0);
+                break;
+            case 2:
+                exit(0);
+                break;
+            case 3:
+                system("cls");
+                goto LABEL;
+                break;
+            default :
+                printf("Error : choose a valid number.");
+            }
         }
-      }
-        return 0;
+    case 7:
+    {
+        system("cls");
+        int x;
+        for(x=0; x<size_b; x++)
+        {
+
+            printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
+            printf("----------------------------------\n");
+        }
+    }
+    return 0;
     }
 }
 void search_book_by_category(int n,struct book books[])
@@ -680,21 +692,21 @@ HOLA:
         }
         else
         {
-        time_t rawtime;
-        struct tm * timeinfo;
-        time ( &rawtime );
-        timeinfo = localtime (&rawtime );
-        borrow_s[0].date_issued.day=timeinfo->tm_mday;
-        borrow_s[0].date_issued.month=timeinfo->tm_mon + 1;
-        borrow_s[0].date_issued.year=timeinfo->tm_year + 1900;
-        borrow_s[0].date_due_to_return.day=borrow_s[0].date_issued.day;
-        borrow_s[0].date_due_to_return.month=borrow_s[0].date_issued.month+1;
-        borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
-        if (borrow_s[0].date_due_to_return.month==13)
-        {
-            borrow_s[0].date_due_to_return.month=1;
-            borrow_s[0].date_due_to_return.year++;
+            time_t rawtime;
+            struct tm * timeinfo;
+            time ( &rawtime );
+            timeinfo = localtime (&rawtime );
+            borrow_s[0].date_issued.day=timeinfo->tm_mday;
+            borrow_s[0].date_issued.month=timeinfo->tm_mon + 1;
+            borrow_s[0].date_issued.year=timeinfo->tm_year + 1900;
+            borrow_s[0].date_due_to_return.day=borrow_s[0].date_issued.day;
+            borrow_s[0].date_due_to_return.month=borrow_s[0].date_issued.month+1;
+            borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
+            if (borrow_s[0].date_due_to_return.month==13)
+            {
+                borrow_s[0].date_due_to_return.month=1;
+                borrow_s[0].date_due_to_return.year++;
+            }
         }
     }
- }
 }
