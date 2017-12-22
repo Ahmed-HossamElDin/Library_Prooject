@@ -522,7 +522,7 @@ EXIT:
             printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
             printf("----------------------------------\n");
         }
-        AGAIN:
+        AGAINN:
         printf("Enter (1) to go to Main Menu:  ");
         scanf("%d",&view_books);
         switch(view_books){
@@ -532,7 +532,40 @@ EXIT:
         }
         default:{
         printf("!!!! Invalid Number !!!!\n");
-        goto AGAIN;
+        goto AGAINN;
+        }
+        }
+    }
+        case 8:
+             {
+        system("cls");
+        int xx;
+        for(xx=0; xx<size_m; xx++)
+        {
+        printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
+               member_s[xx].first_name,
+               member_s[xx].last_name,
+               member_s[xx].ID,
+               member_s[xx].member_adress.building,
+               member_s[xx].member_adress.street,
+               member_s[xx].member_adress.city,
+               member_s[xx].phone_number,
+               member_s[xx].age,member_s[xx].email);
+            printf("-------------------\n");
+        }
+
+            int view_members;
+        AGAIN1:
+        printf("Enter (1) to go to Main Menu:  ");
+        scanf("%d",&view_members);
+        switch(view_members){
+        case 1:{
+        goto LABEL;
+        break;
+        }
+        default:{
+        printf("!!!! Invalid Number !!!!\n");
+        goto AGAIN1;
         }
         }
     }
