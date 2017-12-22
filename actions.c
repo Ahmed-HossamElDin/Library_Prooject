@@ -192,7 +192,6 @@ int action_add_member(int n)
         goto MAIL_SCAN;
     }
         }
-n++;
 return n;
 }
 void action_delete_member()
