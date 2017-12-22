@@ -177,7 +177,7 @@ LABEL:
             else printf("Enter a valid choice");
             break;
         case 2:
-            action_remove_member();
+            action_delete_member();
             size_m--;
             break;
         case 3:

@@ -103,8 +103,6 @@ void action_delete_book(int h)
 void action_add_member(int n)
 {
     system("cls");
-    FILE *members;
-    members = fopen("members.txt","a");
     printf("Enter the member's first name\n");
     FIRST_NAME_SCAN:
     scanf(" %[^\n]s", member_s[n].first_name);
@@ -116,7 +114,7 @@ void action_add_member(int n)
         printf("wrong !! enter a valid word\n");
         goto FIRST_NAME_SCAN;
     }
-        printf("Enter the member name\n");
+        printf("Enter the member's last name\n");
     LAST_NAME_SCAN:
     scanf(" %[^\n]s", member_s[n].last_name);
     nm=validate_string(member_s[n].last_name);
@@ -175,9 +173,9 @@ void action_add_member(int n)
         printf("wrong !! enter a valid mail address in the form of example@domain.com\n");
         goto MAIL_SCAN;
     }
-    fclose(members);
+
 }
-void action_remove_member()
+void action_delete_member()
 {
 
 }
@@ -304,7 +302,7 @@ int validate_phone_number(char y[])
 {
     int x;
     x=strlen(y);
-    if(!((y[0]='0')&&(y[1]='1')&&(x==11)))
+    if(((y[0]='0')&&(y[1]='1')&&(x==11)))
     {
            return 1;
     }
