@@ -660,7 +660,7 @@ HOLA:
             if(ID==member_s[i].ID)
             {
                 flag1=1;
-                scanf("%d", borrow_s[0].ID);
+                borrow_s[0].ID=member_s[i].ID;
 
             }
 
@@ -681,13 +681,12 @@ HOLA:
         borrow_s[0].date_issued.year=timeinfo->tm_year + 1900;
         borrow_s[0].date_due_to_return.day=borrow_s[0].date_issued.day;
         borrow_s[0].date_due_to_return.month=borrow_s[0].date_issued.month+1;
+        borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
         if (borrow_s[0].date_due_to_return.month==13)
         {
             borrow_s[0].date_due_to_return.month=1;
             borrow_s[0].date_due_to_return.year++;
         }
-        borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
-printf("bye");
     }
  }
 }
