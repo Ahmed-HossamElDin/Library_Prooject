@@ -8,6 +8,7 @@ void action_remove_member();
 int read_books();
 int read_members();
 int read_members();
+int read_borrows();
 void save_changes(int h,int z);
 int validate_string(char str[]);
 int validate_mail(char x[]);

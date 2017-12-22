@@ -9,7 +9,7 @@ void search_book_by_author(int n,struct book books[]);
 void search_book_by_category(int n,struct book books[]);
 void search_book_by_title(int n,struct book books[]);
 void search_book_by_ISBN(int n,struct book books[]);
-void borrow_book(int h,int j);
+void borrow_book(int h,int j,int k);
 int size_b;
 int size_m;
 int size_a;
@@ -19,8 +19,10 @@ int main()
     char target[20];
     size_b=read_books();
     size_m=read_members();
+    size_a=read_borrows();
     int a,view_books;
     int borrow[100][4];
+
 LABEL:
     system("cls");
     view_main_menu();
@@ -209,7 +211,7 @@ LABEL:
                 else if(check==3)
                 {
                     printf("hi\n");
-                    borrow_book(size_b,size_m);
+                    borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
                     if (check==1)
@@ -237,7 +239,7 @@ LABEL:
                 else if(check==3)
                 {
                     printf("hi\n");
-                    borrow_book(size_b,size_m);
+                    borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
                     if (check==1)
@@ -265,7 +267,7 @@ LABEL:
                 else if(check==3)
                 {
                     printf("hi\n");
-                    borrow_book(size_b,size_m);
+                    borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
                     if (check==1)
@@ -292,7 +294,7 @@ LABEL:
                     goto EXIT;
                 else if(check==3)
                 {
-                    borrow_book(size_b,size_m);
+                    borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to return to main menu\n      (2) to exit");
                     int choice;
                     scanf("%d",&choice);
@@ -540,7 +542,7 @@ EXIT:
              {
         system("cls");
         int xx;
-        for(xx=0; xx<size_m; xx++)
+        for(xx=0; xx<size_m-1; xx++)
         {
         printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
                member_s[xx].first_name,
@@ -694,7 +696,7 @@ void search_book_by_title(int n,struct book books[])
         printf("\n\nThe book is not found... \n\n");
     }
 }
-void borrow_book(int h,int j)
+void borrow_book(int h,int j,int k)
 {
     long a;
     int i,ID,flag=0,flag1=0;
@@ -716,7 +718,7 @@ AGAIN:
     }
     else
     {
-        borrow_s[0].ISBN=a;
+        borrow_s[k].ISBN=a;
 
 HOLA:
         printf("Enter Your ID: ");
@@ -726,7 +728,7 @@ HOLA:
             if(ID==member_s[i].ID)
             {
                 flag1=1;
-                borrow_s[0].ID=member_s[i].ID;
+                borrow_s[k].ID=member_s[i].ID;
 
             }
 
@@ -742,16 +744,16 @@ HOLA:
             struct tm * timeinfo;
             time ( &rawtime );
             timeinfo = localtime (&rawtime );
-            borrow_s[0].date_issued.day=timeinfo->tm_mday;
-            borrow_s[0].date_issued.month=timeinfo->tm_mon + 1;
-            borrow_s[0].date_issued.year=timeinfo->tm_year + 1900;
-            borrow_s[0].date_due_to_return.day=borrow_s[0].date_issued.day;
-            borrow_s[0].date_due_to_return.month=borrow_s[0].date_issued.month+1;
-            borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
-            if (borrow_s[0].date_due_to_return.month==13)
+            borrow_s[k].date_issued.day=timeinfo->tm_mday;
+            borrow_s[k].date_issued.month=timeinfo->tm_mon + 1;
+            borrow_s[k].date_issued.year=timeinfo->tm_year + 1900;
+            borrow_s[k].date_due_to_return.day=borrow_s[k].date_issued.day;
+            borrow_s[k].date_due_to_return.month=borrow_s[k].date_issued.month+1;
+            borrow_s[k].date_due_to_return.year=borrow_s[k].date_issued.year;
+            if (borrow_s[k].date_due_to_return.month==13)
             {
-                borrow_s[0].date_due_to_return.month=1;
-                borrow_s[0].date_due_to_return.year++;
+                borrow_s[k].date_due_to_return.month=1;
+                borrow_s[k].date_due_to_return.year++;
             }
         }
     }
