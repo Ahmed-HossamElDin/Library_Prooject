@@ -19,7 +19,7 @@ int main()
     char target[20];
     size_b=read_books();
     size_m=read_members();
-    int a;
+    int a,view_books;
     int borrow[100][4];
 LABEL:
     system("cls");
@@ -521,6 +521,19 @@ EXIT:
 
             printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
             printf("----------------------------------\n");
+        }
+        AGAIN:
+        printf("Enter (1) to go to Main Menu:  ");
+        scanf("%d",&view_books);
+        switch(view_books){
+        case 1:{
+        goto LABEL;
+        break;
+        }
+        default:{
+        printf("!!!! Invalid Number !!!!\n");
+        goto AGAIN;
+        }
         }
     }
     return 0;
