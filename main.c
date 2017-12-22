@@ -540,7 +540,7 @@ EXIT:
              {
         system("cls");
         int xx;
-        for(xx=0; xx<size_m; xx++)
+        for(xx=0; xx<size_m-1; xx++)
         {
         printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
                member_s[xx].first_name,
