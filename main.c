@@ -17,8 +17,8 @@ int main()
 
 {
     char target[20];
-    size_b=read_books(book_s);
-    size_m=read_members(member_s);
+    size_b=read_books();
+    size_m=read_members();
     int a;
     int borrow[100][4];
 LABEL:
@@ -492,8 +492,11 @@ EXIT:
         switch(n_exit)
         {
         case 1:
+            save_changes(size_b,size_m);
+            exit(0);
             break;
         case 2:
+            exit(0);
             break;
         case 3:
             system("cls");

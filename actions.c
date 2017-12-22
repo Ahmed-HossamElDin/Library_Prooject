@@ -5,7 +5,7 @@
 #include <string.h>
 #include <conio.h>
 #include "structs.h"
-void action_add_book(int n)
+int action_add_book(int n)
 {
 
     system("cls");
@@ -43,7 +43,8 @@ void action_add_book(int n)
     }
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&book_s[n].date_of_publishing.day,&book_s[n].date_of_publishing.month,&book_s[n].date_of_publishing.year);
-
+n++;
+return n;
 }
 
 void action_add_new_copy(int h,struct book book[])
@@ -100,11 +101,13 @@ void action_delete_book(int h)
         printf("Book not found!!!!!!!!!!!!!!!!!!!");
     }
 }
-void action_add_member(int n)
+int action_add_member(int n)
 {
     system("cls");
     printf("Enter the member's first name\n");
     FIRST_NAME_SCAN:
+        {
+
     scanf(" %[^\n]s", member_s[n].first_name);
     int nm;
     nm=validate_string(member_s[n].first_name);
@@ -114,9 +117,13 @@ void action_add_member(int n)
         printf("wrong !! enter a valid word\n");
         goto FIRST_NAME_SCAN;
     }
+        }
         printf("Enter the member's last name\n");
     LAST_NAME_SCAN:
+        {
+
     scanf(" %[^\n]s", member_s[n].last_name);
+    int nm;
     nm=validate_string(member_s[n].last_name);
     if (nm==1){}
     else
@@ -124,11 +131,14 @@ void action_add_member(int n)
         printf("wrong !! enter a valid word\n");
         goto LAST_NAME_SCAN;
     }
+        }
 
     printf("\nEnter member address \n(building number,street,city)\n");
     scanf(" %d",&member_s[n].member_adress.building);
     printf(",");
     STREET_SCAN:
+        {
+
     scanf(" %s",member_s[n].member_adress.street);
     int st;
     st=validate_string(member_s[n].member_adress.street);
@@ -138,9 +148,11 @@ void action_add_member(int n)
         printf("wrong !! enter a valid word\n");
         goto STREET_SCAN;
     }
-
+        }
     printf(",");
     CITY_SCAN:
+        {
+
     scanf(" %s", member_s[n].member_adress.city);
     int ct;
     ct=validate_string(member_s[n].member_adress.city);
@@ -150,8 +162,11 @@ void action_add_member(int n)
         printf("wrong !! enter a valid word\n");
         goto CITY_SCAN;
     }
+        }
     printf("\nEnter the member phone number\n");
     PHONE_SCAN:
+        {
+
     scanf("%s",member_s[n].phone_number);
     int ph=validate_phone_number(member_s[n].phone_number);
     if (ph==1){}
@@ -160,10 +175,13 @@ void action_add_member(int n)
         printf("wrong !! enter a valid phone number\n");
         goto PHONE_SCAN;
     }
+        }
     printf("\nEnter the number age\n");
     scanf("%d",&member_s[n].age);
     printf("\nEnter the member e-mail\n");
     MAIL_SCAN:
+        {
+
     scanf("%s",member_s[n].email);
     int ml;
     ml = validate_mail(member_s[n].email);
@@ -173,7 +191,9 @@ void action_add_member(int n)
         printf("wrong !! enter a valid mail address in the form of example@domain.com\n");
         goto MAIL_SCAN;
     }
-
+        }
+n++;
+return n;
 }
 void action_delete_member()
 {
@@ -229,19 +249,13 @@ void save_changes(int h,int z)
             fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
         }
     }
-        for(c=0; c<z; c++)
+        for(c=0; c<z-1; c++)
         {
-            if (member_s[c].ID==0)
-            {
-            }
-            else
-            {
             if(c==0)
                 fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             else
                 fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
-        }
         if (borrow_s[c].ID==0)
             {
             }
