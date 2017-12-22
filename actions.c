@@ -5,11 +5,6 @@
 #include <string.h>
 #include <conio.h>
 #include "structs.h"
-void action_save()
-{
-    system("cls");
-
-}
 void action_add_book(int n)
 {
 
@@ -163,10 +158,12 @@ int read_members(struct member membera[])
 void save_changes(int h,int z)
 {
     int c;
+    FILE* save_a;
     FILE* save_b;
     FILE* save_m;
-    save_b =fopen("books.txt","w");
+    save_b=fopen("books.txt","w");
     save_m=fopen("members.txt","w");
+    save_a=fopen("borrow.txt","w");
     for(c=0; c<h; c++)
     {
         if(book_s[c].ISBN==0)
@@ -192,8 +189,17 @@ void save_changes(int h,int z)
                 fprintf(save_m,"\n%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
         }
+        if (borrow_s[c].ID==0)
+            {
+            }
+            else
+            {
+                fprintf(save_m,"%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+            }
+            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
         fclose(save_b);
         fclose(save_m);
+        fclose(save_a);
     }
 void validate_string(char str[])
 {
@@ -247,37 +253,7 @@ void validate_phone_number(char y[])
 
 
         printf("Enter a valid phone number");
-}
-}
-void borrow_book(int h,int j){
-    long a;
-    int i,ID,flag=0,flag1=0;
-printf("Enter Book's ISBN: ");
-AGAIN:
-scanf("%ld",&a);
-for(i=0;i<h;i++){
-    if(a==book_s[i].ISBN){
-        flag=1;
     }
-    }
-if(!flag){
-    printf("Invalid ISBN \n");
-    printf("Please Enter a valid ISBN number");
-    goto AGAIN;
-     }
-HOLA:
-printf("Enter Your ID: ");
-scanf("%d",&ID);
-for(i=0;i<j;i++){
-    if(ID==member_s[i].ID){
-        flag1=1;
-
-    }
-
-}
-if(!flag1){
-    printf("ID not found!");
-    goto HOLA;
 }
 
-}
+

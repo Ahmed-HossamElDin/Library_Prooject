@@ -9,8 +9,10 @@ void search_book_by_author(int n,struct book books[]);
 void search_book_by_category(int n,struct book books[]);
 void search_book_by_title(int n,struct book books[]);
 void search_book_by_ISBN(int n,struct book books[]);
+void borrow_book(int h,int j);
 int size_b;
 int size_m;
+int size_a;
 int main()
 
 {
@@ -18,6 +20,7 @@ int main()
     size_b=read_books(book_s);
     size_m=read_members(member_s);
     int a;
+    int borrow[100][4];
 LABEL:
     system("cls");
     view_main_menu();
@@ -45,7 +48,7 @@ LABEL:
             if (check==1)
                 goto LABEL;
             else if (check==2)
-                exit(0);
+                goto EXIT;
             else printf("Enter a valid choice");
             break;
         case 2:
@@ -62,7 +65,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==2)
@@ -75,7 +78,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==3)
@@ -88,7 +91,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==4)
@@ -102,7 +105,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else
@@ -170,7 +173,7 @@ LABEL:
             if (check==1)
                 goto LABEL;
             else if (check==2)
-                exit(0);
+                goto EXIT;
             else printf("Enter a valid choice");
             break;
         case 2:
@@ -202,10 +205,22 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
-                    else if(check==3){
-                                    borrow_book(size_b,size_m);
+                    goto EXIT;
+                else if(check==3)
+                {
+                    printf("hi\n");
+                    borrow_book(size_b,size_m);
+                    printf("Enter (1) to go to main menu\n      (2) to exit");
+                    scanf("%d",&check);
+                        if (check==1)
+                    {
+                        goto LABEL;
                     }
+                    else if(check==2)
+                    {
+                        goto EXIT;
+                    }
+                }
                 else printf("Enter a valid choice");
             }
             else if (a1==2)
@@ -218,10 +233,22 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
-                    else if(check==3){
-                                    borrow_book(size_b,size_m);
+                    goto EXIT;
+                else if(check==3)
+                {
+                    printf("hi\n");
+                    borrow_book(size_b,size_m);
+                    printf("Enter (1) to go to main menu\n      (2) to exit");
+                    scanf("%d",&check);
+                        if (check==1)
+                    {
+                        goto LABEL;
                     }
+                    else if(check==2)
+                    {
+                        goto EXIT;
+                    }
+                }
                 else printf("Enter a valid choice");
             }
             else if (a1==3)
@@ -234,15 +261,26 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
-                    else if(check==3){
-                                    borrow_book(size_b,size_m);
+                    goto EXIT;
+                else if(check==3)
+                {
+                    printf("hi\n");
+                    borrow_book(size_b,size_m);
+                    printf("Enter (1) to go to main menu\n      (2) to exit");
+                    scanf("%d",&check);
+                        if (check==1)
+                    {
+                        goto LABEL;
                     }
+                    else if(check==2)
+                    {
+                        goto EXIT;
+                    }
+                }
                 else printf("Enter a valid choice");
             }
             else if (a1==4)
             {
-
                 system("cls");
                 search_book_by_category(size_b,book_s);
                 int check;
@@ -251,10 +289,26 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
-                    else if(check==3){
-                                    borrow_book(size_b,size_m);
+                    goto EXIT;
+                else if(check==3)
+                {
+                    borrow_book(size_b,size_m);
+                    printf("Enter (1) to return to main menu\n      (2) to exit");
+                    int choice;
+                    scanf("%d",&choice);
+                    switch (choice)
+                    {
+                    case 1:
+                        goto LABEL;
+                        break;
+                    case 2:
+                        goto EXIT;
+                        break;
+                    default :
+                        printf("Enter a valid choice");
+                        break;
                     }
+                }
                 else printf("Enter a valid choice");
             }
             else
@@ -277,7 +331,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==2)
@@ -290,7 +344,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==3)
@@ -303,12 +357,11 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else if (a1==4)
             {
-
                 system("cls");
                 search_book_by_category(size_b,book_s);
                 int check;
@@ -317,7 +370,7 @@ LABEL:
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
-                    exit(0);
+                    goto EXIT;
                 else printf("Enter a valid choice");
             }
             else
@@ -432,6 +485,8 @@ LABEL:
         save_changes();
         break;
     case 6:
+EXIT:
+    {
         view_exit_menu();
         scanf("%d",&n_exit);
         switch(n_exit)
@@ -447,6 +502,7 @@ LABEL:
         default :
             printf("Error : choose a valid number.");
         }
+      }
         return 0;
     }
 }
@@ -572,4 +628,66 @@ void search_book_by_title(int n,struct book books[])
         printf("\n\nThe book is not found... \n\n");
     }
 }
+void borrow_book(int h,int j)
+{
+    long a;
+    int i,ID,flag=0,flag1=0;
+    printf("Enter Book's ISBN: ");
+AGAIN:
+    scanf("%ld",&a);
+    for(i=0; i<h; i++)
+    {
+        if(a==book_s[i].ISBN)
+        {
+            flag=1;
+        }
+    }
+    if(!flag)
+    {
+        printf("Invalid ISBN \n");
+        printf("Please Enter a valid ISBN number");
+        goto AGAIN;
+    }
+    else
+    {
+        borrow_s[0].ISBN=a;
 
+HOLA:
+        printf("Enter Your ID: ");
+        scanf("%d",&ID);
+        for(i=0; i<j; i++)
+        {
+            if(ID==member_s[i].ID)
+            {
+                flag1=1;
+                scanf("%d", borrow_s[0].ID);
+
+            }
+
+        }
+        if(!flag1)
+        {
+            printf("ID not found!\n");
+            goto HOLA;
+        }
+        else
+        {
+        time_t rawtime;
+        struct tm * timeinfo;
+        time ( &rawtime );
+        timeinfo = localtime (&rawtime );
+        borrow_s[0].date_issued.day=timeinfo->tm_mday;
+        borrow_s[0].date_issued.month=timeinfo->tm_mon + 1;
+        borrow_s[0].date_issued.year=timeinfo->tm_year + 1900;
+        borrow_s[0].date_due_to_return.day=borrow_s[0].date_issued.day;
+        borrow_s[0].date_due_to_return.month=borrow_s[0].date_issued.month+1;
+        if (borrow_s[0].date_due_to_return.month==13)
+        {
+            borrow_s[0].date_due_to_return.month=1;
+            borrow_s[0].date_due_to_return.year++;
+        }
+        borrow_s[0].date_due_to_return.year=borrow_s[0].date_issued.year;
+printf("bye");
+    }
+ }
+}

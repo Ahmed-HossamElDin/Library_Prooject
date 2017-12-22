@@ -12,5 +12,4 @@ void save_changes(int h,int z);
 void validate_string(char str[]);
 int validate_mail(char x[]);
 void validate_phone_number(char y[]);
-void borrow_book();
 #endif // ACTIONS_H_INCLUDED
