@@ -139,7 +139,7 @@ int action_add_member(int n)
     STREET_SCAN:
         {
 
-    scanf("%[^/n]s",member_s[n].member_adress.street);
+    scanf(" %[^\n]s",member_s[n].member_adress.street);
     int st;
     st=validate_string(member_s[n].member_adress.street);
     if (st==1){}
@@ -153,7 +153,7 @@ int action_add_member(int n)
     CITY_SCAN:
         {
 
-    scanf("%[^/n]s", member_s[n].member_adress.city);
+    scanf(" %[^\n]s", member_s[n].member_adress.city);
     int ct;
     ct=validate_string(member_s[n].member_adress.city);
     if (ct==1){}
