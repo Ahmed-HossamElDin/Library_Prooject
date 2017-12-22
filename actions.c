@@ -29,7 +29,7 @@ void action_add_book(int n)
     if(book_s[n].current_no_copies>book_s[n].no_copies)
      {
         system("cls");
-        printf("Cyrrent number of copies can't be more than total number of copies\nEnter (1) to re-enter\n      (2) to exit\n");
+        printf("Current number of copies can't be more than total number of copies\nEnter (1) to re-enter\n      (2) to exit\n");
         int choice;
         scanf("%d",&choice);
         if (choice==1)
@@ -103,29 +103,37 @@ void action_delete_book(int h)
 void action_add_member(int n)
 {
     system("cls");
-    struct member m;
     FILE *members;
     members = fopen("members.txt","a");
-
-    printf("Enter the member name\n");
-    NAME_SCAN:
-    scanf(" %[^\n]s", m.name);
+    printf("Enter the member's first name\n");
+    FIRST_NAME_SCAN:
+    scanf(" %[^\n]s", member_s[n].first_name);
     int nm;
-    nm=validate_string(m.name);
+    nm=validate_string(member_s[n].first_name);
     if (nm==1){}
     else
     {
         printf("wrong !! enter a valid word\n");
-        goto NAME_SCAN;
+        goto FIRST_NAME_SCAN;
+    }
+        printf("Enter the member name\n");
+    LAST_NAME_SCAN:
+    scanf(" %[^\n]s", member_s[n].last_name);
+    nm=validate_string(member_s[n].last_name);
+    if (nm==1){}
+    else
+    {
+        printf("wrong !! enter a valid word\n");
+        goto LAST_NAME_SCAN;
     }
 
     printf("\nEnter member address \n(building number,street,city)\n");
-    scanf(" %d",&m.member_adress.building);
+    scanf(" %d",&member_s[n].member_adress.building);
     printf(",");
     STREET_SCAN:
-    scanf(" %s",m.member_adress.street);
+    scanf(" %s",member_s[n].member_adress.street);
     int st;
-    st=validate_string(m.member_adress.street);
+    st=validate_string(member_s[n].member_adress.street);
     if (st==1){}
     else
     {
@@ -135,9 +143,9 @@ void action_add_member(int n)
 
     printf(",");
     CITY_SCAN:
-    scanf(" %s", m.member_adress.city);
+    scanf(" %s", member_s[n].member_adress.city);
     int ct;
-    ct=validate_string(m.member_adress.city);
+    ct=validate_string(member_s[n].member_adress.city);
     if (ct==1){}
     else
     {
@@ -146,8 +154,8 @@ void action_add_member(int n)
     }
     printf("\nEnter the member phone number\n");
     PHONE_SCAN:
-    scanf("%s",m.phone_number);
-    int ph=validate_phone_number(m.phone_number);
+    scanf("%s",member_s[n].phone_number);
+    int ph=validate_phone_number(member_s[n].phone_number);
     if (ph==1){}
     else
     {
@@ -155,12 +163,12 @@ void action_add_member(int n)
         goto PHONE_SCAN;
     }
     printf("\nEnter the number age\n");
-    scanf("%d",&m.age);
+    scanf("%d",&member_s[n].age);
     printf("\nEnter the member e-mail\n");
     MAIL_SCAN:
-    scanf("%s",m.email);
+    scanf("%s",member_s[n].email);
     int ml;
-    ml = validate_mail(m.email);
+    ml = validate_mail(member_s[n].email);
     if (ml==1){}
     else
     {
@@ -187,14 +195,14 @@ int read_books()
     fclose(books);
     return c;
 }
-int read_members(struct member membera[])
+int read_members()
 {
     int a=0;
     FILE* members;
     members =fopen("members.txt","r");
     while (!feof(members))
     {
-        fscanf(members,"%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s",membera[a].name,&membera[a].ID,&membera[a].member_adress.building,membera[a].member_adress.street,membera[a].member_adress.city,&membera[a].phone_number,&membera[a].age,membera[a].email);
+        fscanf(members,"%[^,],%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s",member_s[a].first_name,member_s[a].last_name,&member_s[a].ID,&member_s[a].member_adress.building,member_s[a].member_adress.street,member_s[a].member_adress.city,&member_s[a].phone_number,&member_s[a].age,member_s[a].email);
         fscanf(members,"\n");
         a++;
     }
@@ -231,9 +239,9 @@ void save_changes(int h,int z)
             else
             {
             if(c==0)
-                fprintf(save_m,"%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             else
-                fprintf(save_m,"\n%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
             }
         }
         if (borrow_s[c].ID==0)
@@ -241,9 +249,8 @@ void save_changes(int h,int z)
             }
             else
             {
-                fprintf(save_m,"%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].name,z+1,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
-            }
             fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
+            }
         fclose(save_b);
         fclose(save_m);
         fclose(save_a);

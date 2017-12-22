@@ -26,7 +26,8 @@ struct adress
 };
 struct member
 {
-    char name[50];
+    char first_name[50];
+    char last_name[50];
     int ID;
     struct adress member_adress;
     char phone_number[12];
