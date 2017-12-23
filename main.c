@@ -258,7 +258,6 @@ here we call function view_menu_book_management which views the elements of the 
                     goto EXIT;
                 else if(check==3)
                 {
-                    printf("hi\n");
                     borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
