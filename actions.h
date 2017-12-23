@@ -9,6 +9,7 @@ int read_books();
 int read_members();
 int read_members();
 int read_borrows();
+void action_return_book(int b , int m , int a);//takes 3 parameters ,size_b,size_m,size_a
 void save_changes(int h,int z,int k);
 int validate_string(char str[]);
 int validate_mail(char x[]);

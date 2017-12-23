@@ -301,6 +301,49 @@ int read_borrows()
     fclose(borrow);
     return a;
 }
+void action_return_book(int b , int m , int a)
+{
+    TAKE_ID:
+    printf("enter your ID\n");
+    int id,i,flag=0,isbn,flag2,position;
+    scanf("%d",&id);
+    printf("enter the ISBN of the book you borrowed to return it\n");
+    scanf("%ld",&isbn);
+    for(i=0;i<a;i++)
+    {
+        if(id==borrow_s[i].ID)
+        {flag=1;
+            if(isbn==borrow_s[i].ISBN)
+                flag2=1;
+                position=i;
+                break;
+        }
+
+    }
+    if (flag==1&&flag2==0)
+        printf("Error : incorrect ISBN\n");
+    else if (flag==1&&flag2==1)
+    {
+            for(i=0;i<m;i++)
+    {
+        if (member_s[i].ID==id)
+    {
+            member_s[i].number_borrowed--;
+    }
+}
+for(i=0;i<b;i++)
+    {
+        if (book_s[i].ISBN==isbn)
+        {
+            book_s[i].current_no_copies++;
+        }
+    }
+        borrow_s[position].ID=0;
+        printf("Book returned\n");
+    }
+    else
+        printf("Error : incorrect ID\n");
+}
 void save_changes(int h,int z,int k)
 {
     int c;
@@ -431,4 +474,8 @@ int validate_phone_number(char y[])
         return 1;
     }
     else return 0;
+}
+void view_overdue(int n)
+{
+
 }

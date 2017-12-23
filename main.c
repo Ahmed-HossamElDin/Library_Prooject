@@ -369,58 +369,117 @@ here we call function view_menu_book_management which views the elements of the 
             break;
         case 2:
             view_search_menu();
+            int choice2;
             scanf("%d",&a1);
             if (a1==1)
             {
                 system("cls");
                 search_book_by_title(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) to return book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     goto EXIT;
-                else printf("Enter a valid choice");
+                else if (check==3)
+                   {
+                       action_return_book(size_b,size_m,size_a);
+                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                       scanf("%d",&choice2);
+                    switch (choice2)
+                    {
+                    case 1:
+                        goto LABEL;
+                        break;
+                    case 2:
+                        goto EXIT;
+                        break;
+                    }
+                }
             }
             else if (a1==2)
             {
                 system("cls");
                 search_book_by_author(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) to return book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     goto EXIT;
-                else printf("Enter a valid choice");
+                else if (check==3)
+                   {
+                       action_return_book(size_b,size_m,size_a);
+                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                       scanf("%d",&choice2);
+                    switch (choice2)
+                    {
+                    case 1:
+                        goto LABEL;
+                        break;
+                    case 2:
+                        goto EXIT;
+                        break;
+                    }
+                }
             }
             else if (a1==3)
             {
                 system("cls");
                 search_book_by_ISBN(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) to return book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     goto EXIT;
-                else printf("Enter a valid choice");
+                else if (check==3)
+                   {
+                       action_return_book(size_b,size_m,size_a);
+                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                       scanf("%d",&choice2);
+                                        switch (choice2)
+                    {
+                    case 1:
+                        goto LABEL;
+                        break;
+                    case 2:
+                        goto EXIT;
+                        break;
+                    }
+                }
             }
             else if (a1==4)
             {
                 system("cls");
                 search_book_by_category(size_b,book_s);
                 int check;
-                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n");
+                printf ("\n\nEnter (1) to go to main menu\nor    (2) to exit\n      (3) to return book\n");
                 scanf("%d",&check);
                 if (check==1)
                     goto LABEL;
                 else if (check==2)
                     goto EXIT;
-                else printf("Enter a valid choice");
+                else if (check==3)
+                   {
+                       action_return_book(size_b,size_m,size_a);
+                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                       scanf("%d",&choice2);
+                    switch (choice2)
+                    {
+                    case 1:
+                        goto LABEL;
+                        break;
+                    case 2:
+                        goto EXIT;
+                        break;
+
+                    }
+                }
+goto LABEL;
             }
             else
             {
@@ -441,17 +500,19 @@ here we call function view_menu_book_management which views the elements of the 
         switch(n_admin)
         {
         case 1:
+            view_overdue(size_b);
             break;
         case 2:
 
         {
             system("cls");
             int diff[size_b];
+            int print_count=0;
             int i,temp,swapped;
             int j=0;
             for(i=0; i<size_b; i++)
             {
-                diff[j]=book_s[i].no_copies-book_s[i].current_no_copies;
+                diff[j]=book_s[i].number_borrowed;
                 j++;
             }
             while(1)
@@ -476,27 +537,47 @@ here we call function view_menu_book_management which views the elements of the 
 
             for(i=0; i<size_b; i++)
             {
-                if (diff[0]==book_s[i].no_copies-book_s[i].current_no_copies)
+                if ((diff[0]==book_s[i].number_borrowed)&&(print_count<5))
                 {
                     printf("%s\n\n",book_s[i].title);
+                    print_count++;
                 }
             }
             for(i=0; i<size_b; i++)
             {
-                if (diff[1]==book_s[i].no_copies-book_s[i].current_no_copies)
+                if ((diff[1]==book_s[i].number_borrowed)&&(print_count<5))
                 {
                     printf("%s\n\n",book_s[i].title);
+                    print_count++;
+
                 }
             }
 
             for(i=0; i<size_b; i++)
             {
-                if (diff[2]==book_s[i].no_copies-book_s[i].current_no_copies)
+                if ((diff[2]==book_s[i].number_borrowed)&&(print_count<5))
                 {
                     printf("%s\n\n",book_s[i].title);
+                    print_count++;
                 }
             }
+            for(i=0; i<size_b; i++)
+            {
+                if ((diff[3]==book_s[i].number_borrowed)&&(print_count<5))
+                {
+                    printf("%s\n\n",book_s[i].title);
+                    print_count++;
 
+                }
+            }
+for(i=0; i<size_b; i++)
+            {
+                if ((diff[4]==book_s[i].number_borrowed)&&(print_count<5))
+                {
+                    printf("%s\n\n",book_s[i].title);
+                    print_count++;
+                }
+            }
 
 
         }
