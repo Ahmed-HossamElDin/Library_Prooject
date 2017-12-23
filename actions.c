@@ -301,22 +301,23 @@ int read_borrows()
     fclose(borrow);
     return a;
 }
-void action_return_book(int b , int m , int a)
+void action_return_book(int b, int m, int a)
 {
-    TAKE_ID:
+TAKE_ID:
     printf("enter your ID\n");
     int id,i,flag=0,isbn,flag2,position;
     scanf("%d",&id);
     printf("enter the ISBN of the book you borrowed to return it\n");
     scanf("%ld",&isbn);
-    for(i=0;i<a;i++)
+    for(i=0; i<a; i++)
     {
         if(id==borrow_s[i].ID)
-        {flag=1;
+        {
+            flag=1;
             if(isbn==borrow_s[i].ISBN)
                 flag2=1;
-                position=i;
-                break;
+            position=i;
+            break;
         }
 
     }
@@ -324,21 +325,24 @@ void action_return_book(int b , int m , int a)
         printf("Error : incorrect ISBN\n");
     else if (flag==1&&flag2==1)
     {
-            for(i=0;i<m;i++)
-    {
-        if (member_s[i].ID==id)
-    {
-            member_s[i].number_borrowed--;
-    }
-}
-for(i=0;i<b;i++)
-    {
-        if (book_s[i].ISBN==isbn)
+        for(i=0; i<m; i++)
         {
-            book_s[i].current_no_copies++;
+            if (member_s[i].ID==id)
+            {
+                member_s[i].number_borrowed--;
+            }
         }
-    }
-        borrow_s[position].ID=0;
+        for(i=0; i<b; i++)
+        {
+            if (book_s[i].ISBN==isbn)
+            {
+                book_s[i].current_no_copies++;
+            }
+        }
+        // borrow_s[position].ID=0;
+        borrow_s[position].date_r.day=current_time.day;
+        borrow_s[position].date_r.month=current_time.month;
+        borrow_s[position].date_r.year=current_time.year;
         printf("Book returned\n");
     }
     else
@@ -381,37 +385,39 @@ void save_changes(int h,int z,int k)
         {
         }
         else
-        {if(c==0)
+        {
+            if(c==0)
             {
-                    fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
-                    borrow_s[c].ID,
-                    borrow_s[c].ISBN,
-                    borrow_s[c].date_issued.day,
-                    borrow_s[c].date_issued.month,
-                    borrow_s[c].date_issued.year,
-                    borrow_s[c].date_due_to_return.day,
-                    borrow_s[c].date_due_to_return.month,
-                    borrow_s[c].date_due_to_return.year,
-                    borrow_s[c].date_r.day,
-                    borrow_s[c].date_r.month,
-                    borrow_s[c].date_r.year);
+                fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
+                        borrow_s[c].ID,
+                        borrow_s[c].ISBN,
+                        borrow_s[c].date_issued.day,
+                        borrow_s[c].date_issued.month,
+                        borrow_s[c].date_issued.year,
+                        borrow_s[c].date_due_to_return.day,
+                        borrow_s[c].date_due_to_return.month,
+                        borrow_s[c].date_due_to_return.year,
+                        borrow_s[c].date_r.day,
+                        borrow_s[c].date_r.month,
+                        borrow_s[c].date_r.year);
 
             }
 
-            else {
+            else
+            {
 
-                    fprintf(save_a,"\n%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
-                    borrow_s[c].ID,
-                    borrow_s[c].ISBN,
-                    borrow_s[c].date_issued.day,
-                    borrow_s[c].date_issued.month,
-                    borrow_s[c].date_issued.year,
-                    borrow_s[c].date_due_to_return.day,
-                    borrow_s[c].date_due_to_return.month,
-                    borrow_s[c].date_due_to_return.year,
-                    borrow_s[c].date_r.day,
-                    borrow_s[c].date_r.month,
-                    borrow_s[c].date_r.year);
+                fprintf(save_a,"\n%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
+                        borrow_s[c].ID,
+                        borrow_s[c].ISBN,
+                        borrow_s[c].date_issued.day,
+                        borrow_s[c].date_issued.month,
+                        borrow_s[c].date_issued.year,
+                        borrow_s[c].date_due_to_return.day,
+                        borrow_s[c].date_due_to_return.month,
+                        borrow_s[c].date_due_to_return.year,
+                        borrow_s[c].date_r.day,
+                        borrow_s[c].date_r.month,
+                        borrow_s[c].date_r.year);
             }
         }
     }
@@ -477,5 +483,44 @@ int validate_phone_number(char y[])
 }
 void view_overdue(int n)
 {
+    int i,flag=0;
+    for(i=0; i<n; i++)
+    {
+        if(current_time.year>borrow_s[i].date_due_to_return.year)
+        {
+
+        }
+
+        else if(current_time.year==borrow_s[i].date_due_to_return.year)
+        {
+            if(current_time.month==borrow_s[i].date_due_to_return.month)
+            {
+                if(current_time.day==borrow_s[i].date_due_to_return.day)
+                {
+                    printf("Due date is today.");
+                }
+
+                else if(current_time.day>borrow_s[i].date_due_to_return.day)
+                {
+
+                }
+                else
+                {
+                    printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+                }
+            }
+            else if(current_time.month>borrow_s[i].date_due_to_return.month)
+            {
+            }
+            else
+            {
+               printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+            }
+        }
+        else
+        {
+            printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+        }
+    }
 
 }

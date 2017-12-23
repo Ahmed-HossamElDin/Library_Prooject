@@ -6,7 +6,7 @@ struct date
     int day;
     int month;
     int year;
-};
+}current_time;
 struct book
 {
     char title[60];

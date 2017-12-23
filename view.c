@@ -1,5 +1,17 @@
 #include "structs.h"
 #include "actions.h"
+void view_current_time()
+{
+            time_t rawtime;
+            struct tm * timeinfo;
+            time ( &rawtime );
+            timeinfo = localtime (&rawtime);
+            current_time.day=timeinfo->tm_mday;
+            current_time.month=timeinfo->tm_mon + 1;
+            current_time.year=timeinfo->tm_year + 1900;
+            printf("                                        Today's date is : %d/%d/%d\n",current_time.day,current_time.month,current_time.year);
+
+}
 void view_main_menu()
 {
 

@@ -1,5 +1,6 @@
 #ifndef VIEW_H_INCLUDED
 #define VIEW_H_INCLUDED
+void view_current_time();
 void view_main_menu();
 void view_menu_book_management();
 void view_menu_member_management();

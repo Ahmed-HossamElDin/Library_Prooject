@@ -30,19 +30,7 @@ int main()
     int a,view_books;
 LABEL:
     system("cls");
-    printf("%d\n",size_a);
-    printf("%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
-           borrow_s[1].ID,
-           borrow_s[1].ISBN,
-           borrow_s[1].date_issued.day,
-           borrow_s[1].date_issued.month,
-           borrow_s[1].date_issued.year,
-           borrow_s[1].date_due_to_return.day,
-           borrow_s[1].date_due_to_return.month,
-           borrow_s[1].date_due_to_return.year,
-           borrow_s[1].date_r.day,
-           borrow_s[1].date_r.month,
-           borrow_s[1].date_r.year);
+    view_current_time();
 /* Here we call the function View main menu which view the elements of the main menu
 if the user enters invalid number the will be returned to it again
 */
@@ -52,7 +40,7 @@ the next input takes the option of the user that takes him to the section he wan
 if user enters invalid input with isn't in the menu the program will let him again to the menu to reenter his input
 */
     scanf("%d",&a);
-    int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option;
+    int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option,overdue_men;
     switch(a)
     {
 
@@ -501,6 +489,17 @@ goto LABEL;
         {
         case 1:
             view_overdue(size_b);
+            printf("Enter (1) to go to main menu\n");
+            scanf("%d",&overdue_men);
+            switch(overdue_men){
+            case 1:{
+            goto LABEL;
+            }
+            default:{
+            printf("Invalid input");
+            exit(0);
+            }
+            }
             break;
         case 2:
 
