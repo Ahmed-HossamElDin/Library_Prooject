@@ -21,8 +21,6 @@ int main()
     size_m=read_members();
     size_a=read_borrows();
     int a,view_books;
-    int borrow[100][4];
-
 LABEL:
     system("cls");
     view_main_menu();
@@ -699,7 +697,7 @@ void search_book_by_title(int n,struct book books[])
 void borrow_book(int h,int j,int k)
 {
     long a;
-    int i,ID,flag=0,flag1=0;
+    int i,ID,flag=0,flag1=0,book_position;
     printf("Enter Book's ISBN: ");
 AGAIN:
     scanf("%ld",&a);
@@ -707,6 +705,7 @@ AGAIN:
     {
         if(a==book_s[i].ISBN)
         {
+            book_position=i;
             flag=1;
         }
     }
@@ -728,8 +727,11 @@ HOLA:
             if(ID==member_s[i].ID)
             {
                 flag1=1;
+                if(member_s[i].number_borrowed<3)
+                {
                 borrow_s[k].ID=member_s[i].ID;
-
+                member_s[i].number_borrowed++;
+                }
             }
 
         }
@@ -740,6 +742,8 @@ HOLA:
         }
         else
         {
+            book_s[book_position].current_no_copies--;
+            book_s[book_position].number_borrowed++;
             time_t rawtime;
             struct tm * timeinfo;
             time ( &rawtime );
