@@ -50,14 +50,16 @@ LABEL:
         here we call function view_menu_book_management which views the elements of the book management section
         */
         view_menu_book_management();
+        /* the next input takes user's choice in book management either to go to insert or other choices*/
         scanf("%d",&n_menu);
         switch(n_menu)
         {
         case 1:
+            /* if user enters 1 it will take him to add books function */
             action_add_book(size_b);
             size_b++;
             system("cls");
-            printf("%d",size_b);
+            printf("%dTh ",size_b);
 
             printf("Book added succesfully");
             int check;
@@ -70,6 +72,7 @@ LABEL:
             else printf("Enter a valid choice");
             break;
         case 2:
+            /* this function will search the book by any method the user chooses by author or publisher or ISBN or title */
             view_search_menu();
             int a1;
             scanf("%d",&a1);
@@ -135,6 +138,7 @@ LABEL:
             break;
 
         case 3:
+            /* here the program makes the user add a new copy of a book he chooses */
             action_add_new_copy(size_b);
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
             scanf("%d",&s);
@@ -151,6 +155,7 @@ LABEL:
             }
             break;
         case 4:
+            /* here the user is able to delete a book he chooses */
             system("cls");
             action_delete_book(size_b);
             printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
@@ -174,7 +179,7 @@ LABEL:
 
         }
         break;
-    case 2:
+    case 2: /* the user is able to add a member or remove a member */
         view_menu_member_management();
         scanf("%d",&n_menu);
         switch(n_menu)
@@ -225,6 +230,7 @@ LABEL:
         }
         break;
     case 3:
+        /* the user is able to search the books then asked whether to borrow a book or go to the main menu */
         view_menu_borrow_management();
         scanf("%d",&n_borrow);
         switch(n_borrow)
@@ -483,6 +489,7 @@ LABEL:
         }
         break;
     case 4:
+        /* The admin is able to see the overdue books or the most popular books */
         view_menu_admin_actions();
         scanf("%d",&n_admin);
         switch(n_admin)
@@ -540,21 +547,28 @@ LABEL:
                 }
             }
             printf("Our most popular books are : \n\n\n");
-
+int pos1,pos2,pos3,pos4;
             for(i=0; i<size_b; i++)
             {
                 if ((diff[0]==book_s[i].number_borrowed)&&(print_count<5))
                 {
                     printf("%s\n\n",book_s[i].title);
                     print_count++;
+                    pos1=i;
+                    break;
+
                 }
             }
             for(i=0; i<size_b; i++)
             {
                 if ((diff[1]==book_s[i].number_borrowed)&&(print_count<5))
                 {
+                    if(i==pos1)
+                        continue;
                     printf("%s\n\n",book_s[i].title);
+                    pos2=i;
                     print_count++;
+                    break;
 
                 }
             }
@@ -563,25 +577,37 @@ LABEL:
             {
                 if ((diff[2]==book_s[i].number_borrowed)&&(print_count<5))
                 {
+                    if(i==pos1||i==pos2)
+                        continue;
                     printf("%s\n\n",book_s[i].title);
+                    pos3=i;
                     print_count++;
+                    break;
                 }
             }
             for(i=0; i<size_b; i++)
             {
                 if ((diff[3]==book_s[i].number_borrowed)&&(print_count<5))
                 {
+                    if(i==pos1||i==pos2||i==pos3)
+                        continue;
                     printf("%s\n\n",book_s[i].title);
+                    pos4=i;
                     print_count++;
 
+                    break;
                 }
             }
             for(i=0; i<size_b; i++)
             {
                 if ((diff[4]==book_s[i].number_borrowed)&&(print_count<5))
                 {
+
+                    if(i==pos1||i==pos2||i==pos3||i==pos4)
+                        continue;
                     printf("%s\n\n",book_s[i].title);
                     print_count++;
+                    break;
                 }
             }
 
@@ -605,6 +631,7 @@ LABEL:
         }
         break;
     case 5 :
+        /* the user is able to save the changes the have done earlier in this program */
         view_save_menu();
         scanf("%d",&n_save);
         switch(n_save)
@@ -627,6 +654,7 @@ LABEL:
         break;
     case 6:
     {
+        /* this section views all books in the library */
         system("cls");
         int x;
         for(x=0; x<size_b; x++)
@@ -653,7 +681,7 @@ AGAINN:
         }
     }
     case 7:
-    {
+    { /* this section show all members in the library */
         system("cls");
         int xx;
         for(xx=0; xx<size_m; xx++)
@@ -690,6 +718,7 @@ AGAIN1:
         }
     }
     case 8:
+        /* this section allows the user to exit the program and asks him if he would like to save the changes or not */
 EXIT:
         {
             view_exit_menu();

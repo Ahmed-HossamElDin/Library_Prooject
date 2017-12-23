@@ -6,7 +6,7 @@
 #include <conio.h>
 #include "structs.h"
 int action_add_book(int n)
-{
+{ /* this function scans the book info from the user and add them to library */
     long temp;
     int i;
     system("cls");
@@ -19,7 +19,7 @@ int action_add_book(int n)
     printf("\nEnter the category\n");
     scanf("%s", book_s[n].category);
 BOOKNEW:
-    printf("\nEnter the book ISBN\n");
+    printf("\nEnter the book ISBN without any special characters\n");
     scanf("%ld",&temp);
     for(i=0; i<n; i++)
     {
@@ -63,6 +63,7 @@ LABEL:
 
 void action_add_new_copy(int h,struct book book[])
 {
+    /* this function add copy to the existing books */
     system("cls");
     long a;
     int b,i,flag=0;
@@ -97,7 +98,7 @@ void action_add_new_copy(int h,struct book book[])
 }
 
 void action_delete_book(int h)
-{
+{ /* this function deletes a book the user uses by ISBN */
     long a;
     int i,flag=0;
     printf("Enter Book's ISBN: ");
@@ -120,7 +121,7 @@ void action_delete_book(int h)
     }
 }
 int action_add_member(int n)
-{
+{ /* this function scans the users info and add them to the library */
     system("cls");
     printf("Enter the member's first name\n");
 FIRST_NAME_SCAN:
@@ -216,7 +217,7 @@ MAIL_SCAN:
     return n;
 }
 void action_delete_member(int m)
-{
+{ /* this function deletes the member by scanning his input */
     int i,id,flag=0;
     printf("enter your ID\n");
     scanf("%d",&id);
@@ -249,7 +250,7 @@ void action_delete_member(int m)
 
 }
 int read_books()
-{
+{ /* this function reads the book from the file and stories them in the array */
     int c=0;
     FILE* books;
     books =fopen("books.txt","r");
@@ -263,7 +264,7 @@ int read_books()
     return c;
 }
 int read_members()
-{
+{ /* this function reads the members from the file and stories them in the array */
     int a=0;
     FILE* members;
     members =fopen("members.txt","r");
@@ -278,7 +279,7 @@ int read_members()
 }
 
 int read_borrows()
-{
+{ /* this function reads the borrowed books from the file and stories them in the array */
     int a=0;
     FILE* borrow;
     borrow=fopen("borrow.txt","r");
@@ -302,7 +303,7 @@ int read_borrows()
     return a;
 }
 void action_return_book(int b, int m, int a)
-{
+{ /* this function is used to return the book by scanning his ISBN */
 TAKE_ID:
     printf("enter your ID\n");
     int id,i,flag=0,isbn,flag2,position;
@@ -339,7 +340,7 @@ TAKE_ID:
                 book_s[i].current_no_copies++;
             }
         }
-        // borrow_s[position].ID=0;
+
         borrow_s[position].date_r.day=current_time.day;
         borrow_s[position].date_r.month=current_time.month;
         borrow_s[position].date_r.year=current_time.year;
@@ -349,7 +350,7 @@ TAKE_ID:
         printf("Error : incorrect ID\n");
 }
 void save_changes(int h,int z,int k)
-{
+{ /* this function saves the three arraies in the files */
     int c;
     FILE* save_a;
     FILE* save_b;
@@ -427,7 +428,7 @@ void save_changes(int h,int z,int k)
     fclose(save_a);
 }
 int validate_string(char str[])
-{
+{ /* this function checks if the string has no special characters */
     int x,i;
     x=strlen(str);
     for(i=0; i<x; i++)
@@ -440,8 +441,8 @@ int validate_string(char str[])
 }
 int validate_mail(char x[])
 // returns one if mail meets criteria
-{
-    int length=0;
+{ /* this function checks that email format is in the correct form : example@domaincom  */
+      int length=0;
     char temp=x[0];
     while(temp)
     {
@@ -472,7 +473,7 @@ int validate_mail(char x[])
 
 }
 int validate_phone_number(char y[])
-{
+{ /* checks if the phone number is 11 digits long and starts with 0 and 1*/
     int x;
     x=strlen(y);
     if(((y[0]='0')&&(y[1]='1')&&(x==11)))
