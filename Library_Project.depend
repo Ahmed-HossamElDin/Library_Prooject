@@ -83,7 +83,7 @@
 
 1513770916 e:\project khara\library_prooject\actions.h
 
-1513975272 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\actions.c
+1514028263 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\actions.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -92,16 +92,16 @@
 	<conio.h>
 	"structs.h"
 
-1513970803 c:\users\ameer.nasser88\documents\github\new folder\library_prooject\structs.h
+1514028227 c:\users\ameer.nasser88\documents\github\new folder\library_prooject\structs.h
 	<time.h>
 
-1513976028 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\view.c
+1513980155 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\view.c
 	"structs.h"
 	"actions.h"
 
-1513966080 c:\users\ameer.nasser88\documents\github\new folder\library_prooject\actions.h
+1513984365 c:\users\ameer.nasser88\documents\github\new folder\library_prooject\actions.h
 
-1513976028 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\main.c
+1514026897 source:c:\users\ameer.nasser88\documents\github\new folder\library_prooject\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

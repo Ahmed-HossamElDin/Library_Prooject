@@ -23,6 +23,9 @@ int main()
     int a,view_books;
 LABEL:
     system("cls");
+    printf("%d\n",size_a);
+    printf("%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
+
     view_main_menu();
     scanf("%d",&a);
     int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option;
@@ -177,9 +180,29 @@ LABEL:
             else printf("Enter a valid choice");
             break;
         case 2:
-            action_delete_member();
-            size_m--;
+            {
+
+
+            system("cls");
+            action_delete_member(size_m);
+            printf("\n(1) Main Menu\n(2) Save Changes and exit\n");
+            scanf("%d",&delete_option);
+
+            switch(delete_option)
+            {
+            case 1:
+                goto LABEL;
+                break;
+            case 2:
+                save_changes(size_b,size_m);
+                break;
+
+            }
             break;
+
+
+            size_m--;
+            break;}
         case 3:
             system("cls");
             goto LABEL;

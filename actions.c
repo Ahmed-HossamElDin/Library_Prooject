@@ -177,6 +177,7 @@ int action_add_member(int n)
         goto PHONE_SCAN;
     }
         }
+
     printf("\nEnter the number age\n");
     scanf("%d",&member_s[n].age);
     printf("\nEnter the member e-mail\n");
@@ -193,11 +194,38 @@ int action_add_member(int n)
         goto MAIL_SCAN;
     }
         }
-        member_s[n].number_borrowed=0;
+member_s[n].number_borrowed=0;
 return n;
 }
-void action_delete_member()
+void action_delete_member(int m)
 {
+int i,id,flag=0;
+printf("enter your ID\n");
+scanf("%d",&id);
+for(i=0;i<m;i++)
+{
+ if(id==member_s[i].ID)
+        {   flag=1;
+        break;
+        }
+}
+if(!flag){
+            system("cls");
+        printf("no such ID!!");
+
+    }
+
+    if(flag==1&&member_s[id].number_borrowed==0)
+    {
+        member_s[id-1].ID=0;
+        printf("member removed successfully!\n");
+    }
+
+else if (flag==1&&member_s[id].number_borrowed!=0)
+{
+    printf("you must return all the books you borrowed in order to leave !\n");
+}
+
 
 }
 int read_books()
@@ -221,7 +249,7 @@ int read_members()
     members =fopen("members.txt","r");
     while (!feof(members))
     {
-        fscanf(members,"%[^,],%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s,%d",member_s[a].first_name,member_s[a].last_name,&member_s[a].ID,&member_s[a].member_adress.building,member_s[a].member_adress.street,member_s[a].member_adress.city,&member_s[a].phone_number,&member_s[a].age,member_s[a].email,&member_s[a].number_borrowed);
+        fscanf(members,"%[^,],%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%[^,],%d",member_s[a].first_name,member_s[a].last_name,&member_s[a].ID,&member_s[a].member_adress.building,member_s[a].member_adress.street,member_s[a].member_adress.city,member_s[a].phone_number,&member_s[a].age,member_s[a].email,&member_s[a].number_borrowed);
         fscanf(members,"\n");
         a++;
     }
@@ -236,7 +264,8 @@ int read_borrows()
     borrow=fopen("borrow.txt","r");
     while (!feof(borrow))
     {
-        fscanf(borrow,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",&borrow_s[a].ID,&borrow_s[a].ISBN,&borrow_s[a].date_issued.day,&borrow_s[a].date_issued.month,&borrow_s[a].date_issued.year,&borrow_s[a].date_due_to_return.day,&borrow_s[a].date_due_to_return.month,&borrow_s[a].date_due_to_return.year,&borrow_s[a].date_returned.day,&borrow_s[a].date_returned.month,&borrow_s[a].date_returned.year);
+        fscanf(borrow,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",&borrow_s[a].ID,&borrow_s[a].ISBN,&borrow_s[a].date_issued.day,&borrow_s[a].date_issued.month,&borrow_s[a].date_issued.year,&borrow_s[a].date_due_to_return.day,&borrow_s[a].date_due_to_return.month,&borrow_s[a].date_due_to_return.year);
+        fscanf(borrow,",%d/%d/%d",&borrow_s[a].date_r.day,&borrow_s[a].date_r.month,&borrow_s[a].date_r.year);
         fscanf(borrow,"\n");
         a++;
     }
@@ -264,11 +293,12 @@ void save_changes(int h,int z,int k)
             fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
         }
     }
-        for(c=0; c<z-1; c++)
+        for(c=0; c<z; c++)
         {
-            if(c==0)
+
+            if(c==0&&member_s[c].ID!=0)
                 fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
-            else
+            else if (member_s[c].ID!=0)
                 fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
             }
         if (borrow_s[c].ID==0)
@@ -279,7 +309,7 @@ void save_changes(int h,int z,int k)
                 for(c=0;c<k;c++)
             {
 
-            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[k].ID,borrow_s[k].ISBN,borrow_s[k].date_issued.day,borrow_s[k].date_issued.month,borrow_s[k].date_issued.year,borrow_s[k].date_due_to_return.day,borrow_s[k].date_due_to_return.month,borrow_s[k].date_due_to_return.year);
+            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[c].ID,borrow_s[c].ISBN,borrow_s[c].date_issued.day,borrow_s[c].date_issued.month,borrow_s[c].date_issued.year,borrow_s[c].date_due_to_return.day,borrow_s[c].date_due_to_return.month,borrow_s[c].date_due_to_return.year,borrow_s[c].date_r.day,borrow_s[c].date_r.month,borrow_s[c].date_r.year);
             }
         }
         fclose(save_b);

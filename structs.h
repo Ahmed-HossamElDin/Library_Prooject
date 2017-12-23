@@ -42,6 +42,6 @@ struct borrowed
     long ISBN;
     struct date date_issued;
     struct date date_due_to_return;
-    struct date date_returned;
+    struct date date_r;
 }borrow_s[100];
 #endif // STRUCTS_H_INCLUDED
