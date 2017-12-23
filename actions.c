@@ -482,45 +482,56 @@ int validate_phone_number(char y[])
     else return 0;
 }
 void view_overdue(int n)
+//checks for current year and year due to return for each book
+//if current year is more than yea of due it means that the date has passed, if it is smaller it means that the date hasnt passed yet
+// if equal it checks for month with the same principle regarding days.
+//special case : when the due date is the same is the current day it prints that the due date is today
+
 {
     int i,flag=0;
     for(i=0; i<n; i++)
     {
-        if(current_time.year>borrow_s[i].date_due_to_return.year)
+        if (borrow_s[i].date_r.day==0)
         {
 
-        }
-
-        else if(current_time.year==borrow_s[i].date_due_to_return.year)
-        {
-            if(current_time.month==borrow_s[i].date_due_to_return.month)
+            if(current_time.year>borrow_s[i].date_due_to_return.year)
             {
-                if(current_time.day==borrow_s[i].date_due_to_return.day)
-                {
-                    printf("Due date is today.");
-                }
+                printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+            }
 
-                else if(current_time.day>borrow_s[i].date_due_to_return.day)
+            else if(current_time.year==borrow_s[i].date_due_to_return.year)
+            {
+                if(current_time.month==borrow_s[i].date_due_to_return.month)
                 {
+                    if(current_time.day==borrow_s[i].date_due_to_return.day)
+                    {
+                        printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d(Due date is today)\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+                    }
 
+                    else if(current_time.day>borrow_s[i].date_due_to_return.day)
+                    {
+                        printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
+                    }
+                    else
+                    {
+                    }
                 }
-                else
+                else if(current_time.month>borrow_s[i].date_due_to_return.month)
                 {
                     printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
                 }
-            }
-            else if(current_time.month>borrow_s[i].date_due_to_return.month)
-            {
+                else
+                {
+                }
             }
             else
             {
-               printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
             }
         }
         else
         {
-            printf("ISBN is : %ld ,borrowed by ID : %d,return date was : %d/%d/%d\n",borrow_s[i].ISBN,borrow_s[i].ID,borrow_s[i].date_due_to_return.day,borrow_s[i].date_due_to_return.month,borrow_s[i].date_due_to_return.year);
-        }
-    }
 
+        }
+
+    }
 }

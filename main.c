@@ -31,14 +31,14 @@ int main()
 LABEL:
     system("cls");
     view_current_time();
-/* Here we call the function View main menu which view the elements of the main menu
-if the user enters invalid number the will be returned to it again
-*/
+    /* Here we call the function View main menu which view the elements of the main menu
+    if the user enters invalid number the will be returned to it again
+    */
     view_main_menu();
     /*
-the next input takes the option of the user that takes him to the section he wants
-if user enters invalid input with isn't in the menu the program will let him again to the menu to reenter his input
-*/
+    the next input takes the option of the user that takes him to the section he wants
+    if user enters invalid input with isn't in the menu the program will let him again to the menu to reenter his input
+    */
     scanf("%d",&a);
     int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option,overdue_men;
     switch(a)
@@ -47,8 +47,8 @@ if user enters invalid input with isn't in the menu the program will let him aga
 
     case 1 :
         /*
-here we call function view_menu_book_management which views the elements of the book management section
-*/
+        here we call function view_menu_book_management which views the elements of the book management section
+        */
         view_menu_book_management();
         scanf("%d",&n_menu);
         switch(n_menu)
@@ -246,7 +246,7 @@ here we call function view_menu_book_management which views the elements of the 
                     goto EXIT;
                 else if(check==3)
                 {
-                     borrow_book(size_b,size_m,size_a);
+                    borrow_book(size_b,size_m,size_a);
                     printf("Enter (1) to go to main menu\n      (2) to exit");
                     scanf("%d",&check);
                     if (check==1)
@@ -371,10 +371,10 @@ here we call function view_menu_book_management which views the elements of the 
                 else if (check==2)
                     goto EXIT;
                 else if (check==3)
-                   {
-                       action_return_book(size_b,size_m,size_a);
-                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
-                       scanf("%d",&choice2);
+                {
+                    action_return_book(size_b,size_m,size_a);
+                    printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                    scanf("%d",&choice2);
                     switch (choice2)
                     {
                     case 1:
@@ -398,10 +398,10 @@ here we call function view_menu_book_management which views the elements of the 
                 else if (check==2)
                     goto EXIT;
                 else if (check==3)
-                   {
-                       action_return_book(size_b,size_m,size_a);
-                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
-                       scanf("%d",&choice2);
+                {
+                    action_return_book(size_b,size_m,size_a);
+                    printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                    scanf("%d",&choice2);
                     switch (choice2)
                     {
                     case 1:
@@ -425,11 +425,11 @@ here we call function view_menu_book_management which views the elements of the 
                 else if (check==2)
                     goto EXIT;
                 else if (check==3)
-                   {
-                       action_return_book(size_b,size_m,size_a);
-                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
-                       scanf("%d",&choice2);
-                                        switch (choice2)
+                {
+                    action_return_book(size_b,size_m,size_a);
+                    printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                    scanf("%d",&choice2);
+                    switch (choice2)
                     {
                     case 1:
                         goto LABEL;
@@ -452,10 +452,10 @@ here we call function view_menu_book_management which views the elements of the 
                 else if (check==2)
                     goto EXIT;
                 else if (check==3)
-                   {
-                       action_return_book(size_b,size_m,size_a);
-                       printf("Enter (1) to return to main menu\n      (2) to exit\n");
-                       scanf("%d",&choice2);
+                {
+                    action_return_book(size_b,size_m,size_a);
+                    printf("Enter (1) to return to main menu\n      (2) to exit\n");
+                    scanf("%d",&choice2);
                     switch (choice2)
                     {
                     case 1:
@@ -467,7 +467,7 @@ here we call function view_menu_book_management which views the elements of the 
 
                     }
                 }
-goto LABEL;
+                goto LABEL;
             }
             else
             {
@@ -488,16 +488,23 @@ goto LABEL;
         switch(n_admin)
         {
         case 1:
-            view_overdue(size_b);
-            printf("Enter (1) to go to main menu\n");
+            view_overdue(size_a);
+            printf("Enter (1) to go to main menu\n      (2) to exit\n");
             scanf("%d",&overdue_men);
-            switch(overdue_men){
-            case 1:{
-            goto LABEL;
+            switch(overdue_men)
+            {
+            case 1:
+            {
+                goto LABEL;
             }
-            default:{
-            printf("Invalid input");
-            exit(0);
+            case 2:
+                {
+                goto EXIT;
+                }
+            default:
+            {
+                printf("Invalid input");
+                exit(0);
             }
             }
             break;
@@ -569,7 +576,7 @@ goto LABEL;
 
                 }
             }
-for(i=0; i<size_b; i++)
+            for(i=0; i<size_b; i++)
             {
                 if ((diff[4]==book_s[i].number_borrowed)&&(print_count<5))
                 {
@@ -691,9 +698,13 @@ EXIT:
             {
             case 1:
                 save_changes(size_b,size_m,size_a);
+                system("cls");
+                printf("Good bye :D");
                 exit(0);
                 break;
             case 2:
+                system("cls");
+                printf("Good bye :D");
                 exit(0);
                 break;
             case 3:
@@ -705,10 +716,10 @@ EXIT:
             }
         }
 
-            default:
-                {
-                    goto LABEL;
-                }
+    default:
+    {
+        goto LABEL;
+    }
     }
     return 0;
 
@@ -875,8 +886,8 @@ HOLA:
                 }
                 else
                 {
-                 printf("You have already borrowed the maximum number of books\n");
-                exit(0);
+                    printf("You have already borrowed the maximum number of books\n");
+                    exit(0);
                 }
             }
 
