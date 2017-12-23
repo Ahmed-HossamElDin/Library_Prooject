@@ -7,7 +7,8 @@
 #include "structs.h"
 int action_add_book(int n)
 {
-
+    long temp;
+    int i;
     system("cls");
     printf("Enter the book title\n");
     scanf(" %[^\n]s", book_s[n].title);
@@ -17,8 +18,21 @@ int action_add_book(int n)
     scanf(" %[^\n]s", book_s[n].publisher);
     printf("\nEnter the category\n");
     scanf("%s", book_s[n].category);
+    BOOKNEW:
     printf("\nEnter the book ISBN\n");
-    scanf(" %ld",&book_s[n].ISBN);
+    scanf("%ld",&temp);
+    for(i=0;i<n;i++)
+    {
+        if(temp==book_s[i].ISBN)
+        {
+            printf("Another book have the same ISBN !");
+            goto BOOKNEW;
+        }
+        else
+        {
+            book_s[n].ISBN=temp;
+        }
+    }
     LABEL:
     {
     printf("\nEnter the total number of copies\n");

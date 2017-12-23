@@ -17,6 +17,12 @@ int main()
 
 {
     char target[20];
+    /* next integers :
+    size_b is the number of the books
+    size_m is the number of members
+    size_a is the number of the borrowed books
+    they return their value from the read functions
+    */
     size_b=read_books();
     size_m=read_members();
     size_a=read_borrows();
@@ -25,8 +31,14 @@ LABEL:
     system("cls");
     printf("%d\n",size_a);
     printf("%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
-
+/* Here we call the function View main menu which view the elements of the main menu
+if the user enters invalid number the will be returned to it again
+*/
     view_main_menu();
+    /*
+the next input takes the option of the user that takes him to the section he wants
+if user enters invalid input with isn't in the menu the program will let him again to the menu to reenter his input
+*/
     scanf("%d",&a);
     int n_menu,n_borrow,n_admin,n_exit,n_save,s,delete_option;
     switch(a)
@@ -34,6 +46,9 @@ LABEL:
 
 
     case 1 :
+        /*
+here we call function view_menu_book_management which views the elements of the book management section
+*/
         view_menu_book_management();
         scanf("%d",&n_menu);
         switch(n_menu)
@@ -180,7 +195,7 @@ LABEL:
             else printf("Enter a valid choice");
             break;
         case 2:
-            {
+        {
 
 
             system("cls");
@@ -202,7 +217,8 @@ LABEL:
 
 
             size_m--;
-            break;}
+            break;
+        }
         case 3:
             system("cls");
             goto LABEL;
@@ -514,6 +530,69 @@ LABEL:
         save_changes();
         break;
     case 6:
+    {
+        system("cls");
+        int x;
+        for(x=0; x<size_b; x++)
+        {
+
+            printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
+            printf("----------------------------------\n");
+        }
+AGAINN:
+        printf("Enter (1) to go to Main Menu:  ");
+        scanf("%d",&view_books);
+        switch(view_books)
+        {
+        case 1:
+        {
+            goto LABEL;
+            break;
+        }
+        default:
+        {
+            printf("!!!! Invalid Number !!!!\n");
+            goto AGAINN;
+        }
+        }
+    }
+    case 7:
+    {
+        system("cls");
+        int xx;
+        for(xx=0; xx<size_m-1; xx++)
+        {
+            printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
+                   member_s[xx].first_name,
+                   member_s[xx].last_name,
+                   member_s[xx].ID,
+                   member_s[xx].member_adress.building,
+                   member_s[xx].member_adress.street,
+                   member_s[xx].member_adress.city,
+                   member_s[xx].phone_number,
+                   member_s[xx].age,member_s[xx].email);
+            printf("-------------------\n");
+        }
+
+        int view_members;
+AGAIN1:
+        printf("Enter (1) to go to Main Menu:  ");
+        scanf("%d",&view_members);
+        switch(view_members)
+        {
+        case 1:
+        {
+            goto LABEL;
+            break;
+        }
+        default:
+        {
+            printf("!!!! Invalid Number !!!!\n");
+            goto AGAIN1;
+        }
+        }
+    }
+    case 8:
 EXIT:
         {
             view_exit_menu();
@@ -535,65 +614,14 @@ EXIT:
                 printf("Error : choose a valid number.");
             }
         }
-    case 7:
-    {
-        system("cls");
-        int x;
-        for(x=0; x<size_b; x++)
-        {
 
-            printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
-            printf("----------------------------------\n");
-        }
-        AGAINN:
-        printf("Enter (1) to go to Main Menu:  ");
-        scanf("%d",&view_books);
-        switch(view_books){
-        case 1:{
-        goto LABEL;
-        break;
-        }
-        default:{
-        printf("!!!! Invalid Number !!!!\n");
-        goto AGAINN;
-        }
-        }
-    }
-        case 8:
-             {
-        system("cls");
-        int xx;
-        for(xx=0; xx<size_m-1; xx++)
-        {
-        printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
-               member_s[xx].first_name,
-               member_s[xx].last_name,
-               member_s[xx].ID,
-               member_s[xx].member_adress.building,
-               member_s[xx].member_adress.street,
-               member_s[xx].member_adress.city,
-               member_s[xx].phone_number,
-               member_s[xx].age,member_s[xx].email);
-            printf("-------------------\n");
-        }
-
-            int view_members;
-        AGAIN1:
-        printf("Enter (1) to go to Main Menu:  ");
-        scanf("%d",&view_members);
-        switch(view_members){
-        case 1:{
-        goto LABEL;
-        break;
-        }
-        default:{
-        printf("!!!! Invalid Number !!!!\n");
-        goto AGAIN1;
-        }
-        }
+            default:
+                {
+                    goto LABEL;
+                }
     }
     return 0;
-    }
+
 }
 void search_book_by_category(int n,struct book books[])
 {
@@ -752,8 +780,8 @@ HOLA:
                 flag1=1;
                 if(member_s[i].number_borrowed<3)
                 {
-                borrow_s[k].ID=member_s[i].ID;
-                member_s[i].number_borrowed++;
+                    borrow_s[k].ID=member_s[i].ID;
+                    member_s[i].number_borrowed++;
                 }
             }
 
