@@ -18,10 +18,10 @@ int action_add_book(int n)
     scanf(" %[^\n]s", book_s[n].publisher);
     printf("\nEnter the category\n");
     scanf("%s", book_s[n].category);
-    BOOKNEW:
+BOOKNEW:
     printf("\nEnter the book ISBN\n");
     scanf("%ld",&temp);
-    for(i=0;i<n;i++)
+    for(i=0; i<n; i++)
     {
         if(temp==book_s[i].ISBN)
         {
@@ -33,32 +33,32 @@ int action_add_book(int n)
             book_s[n].ISBN=temp;
         }
     }
-    LABEL:
+LABEL:
     {
-    printf("\nEnter the total number of copies\n");
-    scanf("%d",&book_s[n].no_copies);
-    printf("\nEnter current the number of copies\n");
-    scanf("%d",&book_s[n].current_no_copies);
-    if(book_s[n].current_no_copies>book_s[n].no_copies)
-     {
-        system("cls");
-        printf("Current number of copies can't be more than total number of copies\nEnter (1) to re-enter\n      (2) to exit\n");
-        int choice;
-        scanf("%d",&choice);
-        if (choice==1)
-            goto LABEL;
-        else if (choice==2)
-            exit(0);
-        else
-            printf("Enter a valid choice");
+        printf("\nEnter the total number of copies\n");
+        scanf("%d",&book_s[n].no_copies);
+        printf("\nEnter current the number of copies\n");
+        scanf("%d",&book_s[n].current_no_copies);
+        if(book_s[n].current_no_copies>book_s[n].no_copies)
+        {
+            system("cls");
+            printf("Current number of copies can't be more than total number of copies\nEnter (1) to re-enter\n      (2) to exit\n");
+            int choice;
+            scanf("%d",&choice);
+            if (choice==1)
+                goto LABEL;
+            else if (choice==2)
+                exit(0);
+            else
+                printf("Enter a valid choice");
 
-     }
+        }
     }
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&book_s[n].date_of_publishing.day,&book_s[n].date_of_publishing.month,&book_s[n].date_of_publishing.year);
     book_s[n].number_borrowed=0;
-n++;
-return n;
+    n++;
+    return n;
 }
 
 void action_add_new_copy(int h,struct book book[])
@@ -79,7 +79,8 @@ void action_add_new_copy(int h,struct book book[])
         {
 
             if(a==book_s[i].ISBN)
-            {   flag=1;
+            {
+                flag=1;
                 book_s[i].current_no_copies+=b;
                 book_s[i].no_copies+=b;
                 printf("Total copies of the book : %d\nCurrent copies of the book : %d",book_s[i].no_copies,book_s[i].current_no_copies);
@@ -89,7 +90,8 @@ void action_add_new_copy(int h,struct book book[])
         }
 
     }
-    if(!flag){
+    if(!flag)
+    {
         printf("Book not found!!!!!!!!!!!!!!!!!!!");
     }
 }
@@ -103,15 +105,17 @@ void action_delete_book(int h)
     for(i=0; i<h; i++)
     {
         if(a==book_s[i].ISBN)
-        {   flag=1;
+        {
+            flag=1;
             book_s[i].ISBN=0;
             break;
         }
 
     }
 
-    if(!flag){
-            system("cls");
+    if(!flag)
+    {
+        system("cls");
         printf("Book not found!!!!!!!!!!!!!!!!!!!");
     }
 }
@@ -119,112 +123,114 @@ int action_add_member(int n)
 {
     system("cls");
     printf("Enter the member's first name\n");
-    FIRST_NAME_SCAN:
-        {
-
-    scanf(" %[^\n]s", member_s[n].first_name);
-    int nm;
-    nm=validate_string(member_s[n].first_name);
-    if (nm==1){}
-    else
+FIRST_NAME_SCAN:
     {
-        printf("wrong !! enter a valid word\n");
-        goto FIRST_NAME_SCAN;
-    }
-        }
-        printf("Enter the member's last name\n");
-    LAST_NAME_SCAN:
-        {
 
-    scanf(" %[^\n]s", member_s[n].last_name);
-    int nm;
-    nm=validate_string(member_s[n].last_name);
-    if (nm==1){}
-    else
-    {
-        printf("wrong !! enter a valid word\n");
-        goto LAST_NAME_SCAN;
-    }
+        scanf(" %[^\n]s", member_s[n].first_name);
+        int nm;
+        nm=validate_string(member_s[n].first_name);
+        if (nm==1) {}
+        else
+        {
+            printf("wrong !! enter a valid word\n");
+            goto FIRST_NAME_SCAN;
         }
-        member_s[n].ID=n+1;
+    }
+    printf("Enter the member's last name\n");
+LAST_NAME_SCAN:
+    {
+
+        scanf(" %[^\n]s", member_s[n].last_name);
+        int nm;
+        nm=validate_string(member_s[n].last_name);
+        if (nm==1) {}
+        else
+        {
+            printf("wrong !! enter a valid word\n");
+            goto LAST_NAME_SCAN;
+        }
+    }
+    member_s[n].ID=n+1;
 
     printf("\nEnter member address \n(building number,street,city)\n");
     scanf("%d",&member_s[n].member_adress.building);
     printf(",");
-    STREET_SCAN:
-        {
-
-    scanf(" %[^\n]s",member_s[n].member_adress.street);
-    int st;
-    st=validate_string(member_s[n].member_adress.street);
-    if (st==1){}
-    else
+STREET_SCAN:
     {
-        printf("wrong !! enter a valid word\n");
-        goto STREET_SCAN;
-    }
+
+        scanf(" %[^\n]s",member_s[n].member_adress.street);
+        int st;
+        st=validate_string(member_s[n].member_adress.street);
+        if (st==1) {}
+        else
+        {
+            printf("wrong !! enter a valid word\n");
+            goto STREET_SCAN;
         }
+    }
     printf(",");
-    CITY_SCAN:
-        {
-
-    scanf(" %[^\n]s", member_s[n].member_adress.city);
-    int ct;
-    ct=validate_string(member_s[n].member_adress.city);
-    if (ct==1){}
-    else
+CITY_SCAN:
     {
-        printf("wrong !! enter a valid word\n");
-        goto CITY_SCAN;
-    }
+
+        scanf(" %[^\n]s", member_s[n].member_adress.city);
+        int ct;
+        ct=validate_string(member_s[n].member_adress.city);
+        if (ct==1) {}
+        else
+        {
+            printf("wrong !! enter a valid word\n");
+            goto CITY_SCAN;
         }
+    }
     printf("\nEnter the member phone number\n");
-    PHONE_SCAN:
-        {
-
-    scanf("%s",member_s[n].phone_number);
-    int ph=validate_phone_number(member_s[n].phone_number);
-    if (ph==1){}
-    else
+PHONE_SCAN:
     {
-        printf("wrong !! enter a valid phone number\n");
-        goto PHONE_SCAN;
-    }
+
+        scanf("%s",member_s[n].phone_number);
+        int ph=validate_phone_number(member_s[n].phone_number);
+        if (ph==1) {}
+        else
+        {
+            printf("wrong !! enter a valid phone number\n");
+            goto PHONE_SCAN;
         }
+    }
 
     printf("\nEnter the number age\n");
     scanf("%d",&member_s[n].age);
     printf("\nEnter the member e-mail\n");
-    MAIL_SCAN:
-        {
-
-    scanf("%s",member_s[n].email);
-    int ml;
-    ml = validate_mail(member_s[n].email);
-    if (ml==1){}
-    else
+MAIL_SCAN:
     {
-        printf("wrong !! enter a valid mail address in the form of example@domain.com\n");
-        goto MAIL_SCAN;
-    }
+
+        scanf("%s",member_s[n].email);
+        int ml;
+        ml = validate_mail(member_s[n].email);
+        if (ml==1) {}
+        else
+        {
+            printf("wrong !! enter a valid mail address in the form of example@domain.com\n");
+            goto MAIL_SCAN;
         }
-member_s[n].number_borrowed=0;
-return n;
+    }
+    member_s[n].number_borrowed=0;
+    return n;
 }
 void action_delete_member(int m)
 {
-int i,id,flag=0;
-printf("enter your ID\n");
-scanf("%d",&id);
-for(i=0;i<m;i++)
-{
- if(id==member_s[i].ID)
-        {   flag=1;
-        break;
+    int i,id,flag=0;
+    printf("enter your ID\n");
+    scanf("%d",&id);
+    for(i=0; i<m; i++)
+    {
+        if(id==member_s[i].ID)
+        {
+            flag=1;
+            break;
         }
-}
-if(!flag){
-            system("cls");
+    }
+    if(!flag)
+    {
+        system("cls");
         printf("no such ID!!");
 
     }
@@ -235,10 +241,10 @@ if(!flag){
         printf("member removed successfully!\n");
     }
 
-else if (flag==1&&member_s[id].number_borrowed!=0)
-{
-    printf("you must return all the books you borrowed in order to leave !\n");
-}
+    else if (flag==1&&member_s[id].number_borrowed!=0)
+    {
+        printf("you must return all the books you borrowed in order to leave !\n");
+    }
 
 
 }
@@ -278,8 +284,17 @@ int read_borrows()
     borrow=fopen("borrow.txt","r");
     while (!feof(borrow))
     {
-        fscanf(borrow,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",&borrow_s[a].ID,&borrow_s[a].ISBN,&borrow_s[a].date_issued.day,&borrow_s[a].date_issued.month,&borrow_s[a].date_issued.year,&borrow_s[a].date_due_to_return.day,&borrow_s[a].date_due_to_return.month,&borrow_s[a].date_due_to_return.year);
-        fscanf(borrow,",%d/%d/%d",&borrow_s[a].date_r.day,&borrow_s[a].date_r.month,&borrow_s[a].date_r.year);
+        fscanf(borrow,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",&borrow_s[a].ID,
+               &borrow_s[a].ISBN,
+               &borrow_s[a].date_issued.day,
+               &borrow_s[a].date_issued.month,
+               &borrow_s[a].date_issued.year,
+               &borrow_s[a].date_due_to_return.day,
+               &borrow_s[a].date_due_to_return.month,
+               &borrow_s[a].date_due_to_return.year,
+               &borrow_s[a].date_r.day,
+               &borrow_s[a].date_r.month,
+               &borrow_s[a].date_r.year);
         fscanf(borrow,"\n");
         a++;
     }
@@ -301,35 +316,67 @@ void save_changes(int h,int z,int k)
         {
         }
         else
-        { if(c==0)
-            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
-          else
-            fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
-        }
-    }
-        for(c=0; c<z; c++)
         {
-
-            if(c==0&&member_s[c].ID!=0)
-                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
-            else if (member_s[c].ID!=0)
-                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
-            }
-        if (borrow_s[c].ID==0)
-            {
-            }
+            if(c==0)
+                fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
             else
-            {
-                for(c=0;c<k;c++)
-            {
+                fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
+        }
+    }
+    for(c=0; c<z; c++)
+    {
 
-            fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[c].ID,borrow_s[c].ISBN,borrow_s[c].date_issued.day,borrow_s[c].date_issued.month,borrow_s[c].date_issued.year,borrow_s[c].date_due_to_return.day,borrow_s[c].date_due_to_return.month,borrow_s[c].date_due_to_return.year,borrow_s[c].date_r.day,borrow_s[c].date_r.month,borrow_s[c].date_r.year);
+        if(c==0&&member_s[c].ID!=0)
+            fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
+        else if (member_s[c].ID!=0)
+            fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
+    }
+    for(c=0; c<k; c++)
+    {
+
+        if (borrow_s[c].ID==0)
+        {
+        }
+        else
+        {if(c==0)
+            {
+                    fprintf(save_a,"%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
+                    borrow_s[c].ID,
+                    borrow_s[c].ISBN,
+                    borrow_s[c].date_issued.day,
+                    borrow_s[c].date_issued.month,
+                    borrow_s[c].date_issued.year,
+                    borrow_s[c].date_due_to_return.day,
+                    borrow_s[c].date_due_to_return.month,
+                    borrow_s[c].date_due_to_return.year,
+                    borrow_s[c].date_r.day,
+                    borrow_s[c].date_r.month,
+                    borrow_s[c].date_r.year);
+
+            }
+
+            else {
+
+                    fprintf(save_a,"\n%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
+                    borrow_s[c].ID,
+                    borrow_s[c].ISBN,
+                    borrow_s[c].date_issued.day,
+                    borrow_s[c].date_issued.month,
+                    borrow_s[c].date_issued.year,
+                    borrow_s[c].date_due_to_return.day,
+                    borrow_s[c].date_due_to_return.month,
+                    borrow_s[c].date_due_to_return.year,
+                    borrow_s[c].date_r.day,
+                    borrow_s[c].date_r.month,
+                    borrow_s[c].date_r.year);
             }
         }
-        fclose(save_b);
-        fclose(save_m);
-        fclose(save_a);
     }
+
+    fclose(save_b);
+    fclose(save_m);
+    fclose(save_a);
+}
 int validate_string(char str[])
 {
     int x,i;
@@ -338,7 +385,7 @@ int validate_string(char str[])
     {
         if(((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
             return 1;
-            else return 0;
+        else return 0;
     }
 
 }
@@ -381,7 +428,7 @@ int validate_phone_number(char y[])
     x=strlen(y);
     if(((y[0]='0')&&(y[1]='1')&&(x==11)))
     {
-           return 1;
+        return 1;
     }
     else return 0;
 }

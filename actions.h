@@ -9,7 +9,7 @@ int read_books();
 int read_members();
 int read_members();
 int read_borrows();
-void save_changes(int h,int z);
+void save_changes(int h,int z,int k);
 int validate_string(char str[]);
 int validate_mail(char x[]);
 int validate_phone_number(char y[]);

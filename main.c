@@ -22,6 +22,7 @@ int main()
     size_m is the number of members
     size_a is the number of the borrowed books
     they return their value from the read functions
+
     */
     size_b=read_books();
     size_m=read_members();
@@ -30,7 +31,18 @@ int main()
 LABEL:
     system("cls");
     printf("%d\n",size_a);
-    printf("%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",borrow_s[0].ID,borrow_s[0].ISBN,borrow_s[0].date_issued.day,borrow_s[0].date_issued.month,borrow_s[0].date_issued.year,borrow_s[0].date_due_to_return.day,borrow_s[0].date_due_to_return.month,borrow_s[0].date_due_to_return.year);
+    printf("%d,%ld,%d/%d/%d,%d/%d/%d,%d/%d/%d",
+           borrow_s[1].ID,
+           borrow_s[1].ISBN,
+           borrow_s[1].date_issued.day,
+           borrow_s[1].date_issued.month,
+           borrow_s[1].date_issued.year,
+           borrow_s[1].date_due_to_return.day,
+           borrow_s[1].date_due_to_return.month,
+           borrow_s[1].date_due_to_return.year,
+           borrow_s[1].date_r.day,
+           borrow_s[1].date_r.month,
+           borrow_s[1].date_r.year);
 /* Here we call the function View main menu which view the elements of the main menu
 if the user enters invalid number the will be returned to it again
 */
@@ -145,7 +157,7 @@ here we call function view_menu_book_management which views the elements of the 
                 goto LABEL;
                 break;
             case 2:
-                save_changes(size_b,size_m);
+                save_changes(size_b,size_m,size_a);
                 break;
 
             }
@@ -162,7 +174,7 @@ here we call function view_menu_book_management which views the elements of the 
                 goto LABEL;
                 break;
             case 2:
-                save_changes(size_b,size_m);
+                save_changes(size_b,size_m,size_a);
                 break;
 
             }
@@ -181,7 +193,6 @@ here we call function view_menu_book_management which views the elements of the 
         {
         case 1:
             action_add_member(size_m);
-            size_m++;
             system("cls");
             printf("Member added succesfully.");
             size_m++;
@@ -209,7 +220,7 @@ here we call function view_menu_book_management which views the elements of the 
                 goto LABEL;
                 break;
             case 2:
-                save_changes(size_b,size_m);
+                save_changes(size_b,size_m,size_a);
                 break;
 
             }
@@ -305,7 +316,7 @@ here we call function view_menu_book_management which views the elements of the 
                 {
                     printf("hi\n");
                     borrow_book(size_b,size_m,size_a);
-                    printf("Enter (1) to go to main menu\n      (2) to exit");
+                    printf("Enter (1) to go to main menu\n      (2) to exit\n");
                     scanf("%d",&check);
                     if (check==1)
                     {
@@ -515,11 +526,11 @@ here we call function view_menu_book_management which views the elements of the 
 
         case 1:
 
-            save_changes(size_b,size_m);
+            save_changes(size_b,size_m,size_a);
 
             break;
         case 2:
-            save_changes(size_b,size_m);
+            save_changes(size_b,size_m,size_a);
             goto LABEL;
             break;
         case 3:
@@ -527,7 +538,6 @@ here we call function view_menu_book_management which views the elements of the 
             goto LABEL;
             break;
         }
-        save_changes();
         break;
     case 6:
     {
@@ -560,9 +570,9 @@ AGAINN:
     {
         system("cls");
         int xx;
-        for(xx=0; xx<size_m-1; xx++)
+        for(xx=0; xx<size_m; xx++)
         {
-            printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\n Email: %s\n",
+            printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\nEmail: %s\n",
                    member_s[xx].first_name,
                    member_s[xx].last_name,
                    member_s[xx].ID,
@@ -570,7 +580,8 @@ AGAINN:
                    member_s[xx].member_adress.street,
                    member_s[xx].member_adress.city,
                    member_s[xx].phone_number,
-                   member_s[xx].age,member_s[xx].email);
+                   member_s[xx].age,
+                   member_s[xx].email);
             printf("-------------------\n");
         }
 
@@ -600,7 +611,7 @@ EXIT:
             switch(n_exit)
             {
             case 1:
-                save_changes(size_b,size_m);
+                save_changes(size_b,size_m,size_a);
                 exit(0);
                 break;
             case 2:
@@ -783,6 +794,11 @@ HOLA:
                     borrow_s[k].ID=member_s[i].ID;
                     member_s[i].number_borrowed++;
                 }
+                else
+                {
+                 printf("You have already borrowed the maximum number of books\n");
+                exit(0);
+                }
             }
 
         }
@@ -809,6 +825,7 @@ HOLA:
             {
                 borrow_s[k].date_due_to_return.month=1;
                 borrow_s[k].date_due_to_return.year++;
+                size_a++;
             }
         }
     }
