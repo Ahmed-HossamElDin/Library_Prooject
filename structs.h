@@ -17,6 +17,7 @@ struct book
     int no_copies;
     int current_no_copies;
     struct date date_of_publishing;
+    int number_borrowed;
 } book_s[100];
 struct adress
 {
@@ -33,6 +34,7 @@ struct member
     char phone_number[12];
     int age;
     char email[50];
+    int number_borrowed;
 }member_s[100];
 struct borrowed
 {

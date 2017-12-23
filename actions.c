@@ -42,6 +42,7 @@ int action_add_book(int n)
     }
     printf("\nEnter the date in dd mm yy format\n");
     scanf("%d%d%d",&book_s[n].date_of_publishing.day,&book_s[n].date_of_publishing.month,&book_s[n].date_of_publishing.year);
+    book_s[n].number_borrowed=0;
 n++;
 return n;
 }
@@ -139,7 +140,7 @@ int action_add_member(int n)
     STREET_SCAN:
         {
 
-    scanf("%[^/n]s",member_s[n].member_adress.street);
+    scanf(" %[^\n]s",member_s[n].member_adress.street);
     int st;
     st=validate_string(member_s[n].member_adress.street);
     if (st==1){}
@@ -153,7 +154,7 @@ int action_add_member(int n)
     CITY_SCAN:
         {
 
-    scanf("%[^/n]s", member_s[n].member_adress.city);
+    scanf(" %[^\n]s", member_s[n].member_adress.city);
     int ct;
     ct=validate_string(member_s[n].member_adress.city);
     if (ct==1){}
@@ -192,6 +193,7 @@ int action_add_member(int n)
         goto MAIL_SCAN;
     }
         }
+        member_s[n].number_borrowed=0;
 return n;
 }
 void action_delete_member()
@@ -205,7 +207,7 @@ int read_books()
     books =fopen("books.txt","r");
     while (!feof(books))
     {
-        fscanf(books,"%[^,],%[^,],%[^,],%[^,],%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year);
+        fscanf(books,"%[^,],%[^,],%[^,],%[^,],%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,&book_s[c].ISBN,&book_s[c].no_copies,&book_s[c].current_no_copies,&book_s[c].date_of_publishing.day,&book_s[c].date_of_publishing.month,&book_s[c].date_of_publishing.year,&book_s[c].number_borrowed);
         fscanf(books,"\n");
         c++;
     }
@@ -219,7 +221,7 @@ int read_members()
     members =fopen("members.txt","r");
     while (!feof(members))
     {
-        fscanf(members,"%[^,],%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s",member_s[a].first_name,member_s[a].last_name,&member_s[a].ID,&member_s[a].member_adress.building,member_s[a].member_adress.street,member_s[a].member_adress.city,&member_s[a].phone_number,&member_s[a].age,member_s[a].email);
+        fscanf(members,"%[^,],%[^,],%d,%d/%[^/]/%[^,],%[^,],%d,%s,%d",member_s[a].first_name,member_s[a].last_name,&member_s[a].ID,&member_s[a].member_adress.building,member_s[a].member_adress.street,member_s[a].member_adress.city,&member_s[a].phone_number,&member_s[a].age,member_s[a].email,&member_s[a].number_borrowed);
         fscanf(members,"\n");
         a++;
     }
@@ -257,17 +259,17 @@ void save_changes(int h,int z,int k)
         }
         else
         { if(c==0)
-            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+            fprintf(save_b,"%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
           else
-            fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year);
+            fprintf(save_b,"\n%s,%s,%s,%s,%ld,%d,%d,%d/%d/%d,%d",book_s[c].title,book_s[c].author,book_s[c].publisher,book_s[c].category,book_s[c].ISBN,book_s[c].no_copies,book_s[c].current_no_copies,book_s[c].date_of_publishing.day,book_s[c].date_of_publishing.month,book_s[c].date_of_publishing.year,book_s[c].number_borrowed);
         }
     }
         for(c=0; c<z-1; c++)
         {
             if(c==0)
-                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
             else
-                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email);
+                fprintf(save_m,"\n%s,%s,%d,%d/%s/%s,%s,%d,%s,%d",member_s[c].first_name,member_s[c].last_name,member_s[c].ID,member_s[c].member_adress.building,member_s[c].member_adress.street,member_s[c].member_adress.city,member_s[c].phone_number,member_s[c].age,member_s[c].email,member_s[c].number_borrowed);
             }
         if (borrow_s[c].ID==0)
             {
@@ -339,5 +341,3 @@ int validate_phone_number(char y[])
     }
     else return 0;
 }
-
-
