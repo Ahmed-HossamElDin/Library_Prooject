@@ -885,7 +885,7 @@ void search_book_by_title(int n,struct book books[])
 void borrow_book(int h,int j,int k)
 {
     long a;
-    int i,ID,flag=0,flag1=0,book_position;
+    int i,ID,flag=0,flag1=0,flag2=0,book_position;
     printf("Enter Book's ISBN: ");
 AGAIN:
     scanf("%ld",&a);
@@ -923,7 +923,9 @@ HOLA:
                 else
                 {
                     printf("You have already borrowed the maximum number of books\n");
-                    exit(0);
+                    flag2=1;
+                    break;
+                    goto HOLA;
                 }
             }
 
@@ -933,8 +935,11 @@ HOLA:
             printf("ID not found!\n");
             goto HOLA;
         }
-        else
-        {
+        while(flag2=0){
+
+
+
+
             book_s[book_position].current_no_copies--;
             book_s[book_position].number_borrowed++;
             time_t rawtime;
@@ -953,6 +958,7 @@ HOLA:
                 borrow_s[k].date_due_to_return.year++;
                 size_a++;
             }
-        }
+
+    }
     }
 }
