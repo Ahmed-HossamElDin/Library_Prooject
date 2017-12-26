@@ -666,7 +666,7 @@ int pos1,pos2,pos3,pos4;
         int x;
         for(x=0; x<size_b; x++)
         {
-
+if(book_s[x].ISBN==0)continue;
             printf("Title: %s\nAuthor: %s\nPublisher: %s\nCategory: %s\nISBN: %ld\nNo of copies: %d\nCurrent no of copies: %d\nDate of publishing: %d/%d/%d\n",book_s[x].title,book_s[x].author,book_s[x].publisher,book_s[x].category,book_s[x].ISBN,book_s[x].no_copies,book_s[x].current_no_copies,book_s[x].date_of_publishing.day,book_s[x].date_of_publishing.month,book_s[x].date_of_publishing.year);
             printf("----------------------------------\n");
         }
@@ -693,6 +693,7 @@ AGAINN:
         int xx;
         for(xx=0; xx<size_m; xx++)
         {
+            if(member_s[xx].ID==0)continue;
             printf("First name: %s\nLast name: %s\nID: %ld\nMember Address:%d,%s,%s\nPhone Number: %s\nAge: %d\nEmail: %s\n",
                    member_s[xx].first_name,
                    member_s[xx].last_name,

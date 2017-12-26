@@ -3,4 +3,3 @@ Ahmad,Ramzy,2,14/abd el fatah/alexandria,01126423940,20,ramozaa@gmail.com,2
 Ameer,Nasser,3,9/ali/alexandria,01111610453,20,amoraa@gmail.com,1
 Roaa,Mostafa,4,41/asdas/alexandria,01234567899,21,Rokrok@yahoo.com,1
 Reem,Amgad,5,41/wngt/alexandria,01245367854,14,Ramroma@gmail.com,3
-Jon,snow,6,54/world/earth,01245135896,15,jonsnow@got.com,1

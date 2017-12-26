@@ -22,9 +22,9 @@ void view_current_time()
 void view_main_menu()
 { /*views main menu options*/
 
-    printf(ANSI_COLOR_RED  "\t\t\t\t\t!!!!!!!!!WELCOME>>>>>>>>>>>>>\n"   ANSI_COLOR_RESET "\n");
+    printf(ANSI_COLOR_CYAN  "\t\t\t\t\t!!!!!!!!!WELCOME>>>>>>>>>>>>>\n"   ANSI_COLOR_RESET "\n");
 
-printf(ANSI_COLOR_GREEN"(1) Book Management\n(2) Member Management\n(3) Borrow Management\n(4) Administrative actions\n(5) Save Changes\n(6) View all books\n(7) View all members\n(8) Exit\n"ANSI_COLOR_RESET);}
+printf(ANSI_COLOR_CYAN"(1) Book Management\n(2) Member Management\n(3) Borrow Management\n(4) Administrative actions\n(5) Save Changes\n(6) View all books\n(7) View all members\n(8) Exit\n"ANSI_COLOR_RESET);}
 
 void view_menu_book_management()
 {/*views view menu options*/
@@ -40,12 +40,12 @@ void view_menu_book_management()
 void view_menu_member_management()
 {/*views member menu options*/
     system("cls");
-    printf("(1) Registration\n(2) Remove member\n(3) Back\n");
+    printf(ANSI_COLOR_GREEN"(1) Registration\n(2) Remove member\n(3) Back\n"ANSI_COLOR_RESET);
 }
 void view_menu_borrow_management()
 {/*views borrow menu options*/
     system("cls");
-    printf("(1) Borrow a Book\n(2) Return a Book\n(3) Back\n");
+    printf(ANSI_COLOR_MAGENTA"(1) Borrow a Book\n(2) Return a Book\n(3) Back\n"ANSI_COLOR_RESET);
 }
 
 void view_menu_admin_actions()
