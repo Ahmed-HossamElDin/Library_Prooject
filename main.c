@@ -920,28 +920,7 @@ HOLA:
                 {
                     borrow_s[k].ID=member_s[i].ID;
                     member_s[i].number_borrowed++;
-                }
-                else
-                {
-                    printf("You have already borrowed the maximum number of books\n");
-                    flag2=1;
-                    break;
-                    goto HOLA;
-                }
-            }
-
-        }
-        if(!flag1)
-        {
-            printf("ID not found!\n");
-            goto HOLA;
-        }
-        while(flag2=0){
-
-
-
-
-            book_s[book_position].current_no_copies--;
+                    book_s[book_position].current_no_copies--;
             book_s[book_position].number_borrowed++;
             time_t rawtime;
             struct tm * timeinfo;
@@ -960,6 +939,22 @@ HOLA:
                 size_a++;
             }
 
-    }
+                }
+                else
+                {
+                    printf("You have already borrowed the maximum number of books\n");
+                    flag2=1;
+                    break;
+                    goto HOLA;
+                }
+            }
+
+        }
+        if(!flag1)
+        {
+            printf("ID not found!\n");
+            goto HOLA;
+        }
+
     }
 }
